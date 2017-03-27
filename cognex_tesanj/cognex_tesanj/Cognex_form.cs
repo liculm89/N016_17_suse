@@ -160,7 +160,6 @@ namespace cognex_tesanj
                     if (!_closing && _autoconnect && cbAutoReconnect.Checked)
                     {
                         frmReconnecting frm = new frmReconnecting(this, _system);
-
                         if (frm.ShowDialog() == DialogResult.Cancel)
                         {
                             btnConnect.Enabled = true;

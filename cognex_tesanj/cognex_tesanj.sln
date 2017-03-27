@@ -5,6 +5,11 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cognex_tesanj", "cognex_tesanj\cognex_tesanj.csproj", "{BCD801DD-63C2-414A-A259-0E4F6E3805E0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A1EE2309-3574-4AB8-8F42-802C1F3099FF}"
+	ProjectSection(SolutionItems) = preProject
+		res\login.png = res\login.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -24,3 +24,45 @@ G:\N016_17 - Dogradnja Cognex DM čitača datamatrix koda na stroju za mjerenje 
 G:\N016_17 - Dogradnja Cognex DM čitača datamatrix koda na stroju za mjerenje sile uprešavanja\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.csprojResolveAssemblyReference.cache
 G:\N016_17 - Dogradnja Cognex DM čitača datamatrix koda na stroju za mjerenje sile uprešavanja\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.Main_form.resources
 G:\N016_17 - Dogradnja Cognex DM čitača datamatrix koda na stroju za mjerenje sile uprešavanja\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.Cognex_form.resources
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.exe.config
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.exe.manifest
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.application
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.exe
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.pdb
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\bin\x86\Release\Cognex.DataMan.SDK.Discovery.PC.xml
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\bin\x86\Release\Cognex.DataMan.SDK.PC.xml
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\bin\x86\Release\Cognex.DataMan.SDK.Utils.PC.xml
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.csprojResolveAssemblyReference.cache
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\obj\x86\Release\Interop.ADODB.dll
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\obj\x86\Release\Interop.JRO.dll
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.csproj.ResolveComReference.cache
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.Main_form.resources
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.Database_form.resources
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.frmReconnecting.resources
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.Cognex_form.resources
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.Properties.Resources.resources
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.csproj.GenerateResource.Cache
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.exe.manifest
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.application
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.exe
+\\VBOXSVR\n016_17_cognex\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.pdb
+I:\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.exe.config
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\Interop.ADODB.dll
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\Interop.JRO.dll
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.csproj.ResolveComReference.cache
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.exe
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.pdb
+I:\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.exe.manifest
+I:\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.application
+I:\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.exe
+I:\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.pdb
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.Main_form.resources
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.Database_form.resources
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.frmReconnecting.resources
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.Cognex_form.resources
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.Properties.Resources.resources
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.csproj.GenerateResource.Cache
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.exe.manifest
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.application
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.LoginForm.resources
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.csprojResolveAssemblyReference.cache

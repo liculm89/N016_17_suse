@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.Odbc;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace cognex_tesanj
@@ -17,7 +10,6 @@ namespace cognex_tesanj
         DataSet myset = new DataSet("Excel import");
         DataTable dataTable = new DataTable("excelImport");
         System.Data.OleDb.OleDbDataAdapter dataAdapter;
-        //System.Data.
 
         System.Data.OleDb.OleDbCommandBuilder scb;
         DataSet ds = new DataSet();
@@ -28,7 +20,9 @@ namespace cognex_tesanj
             System.Data.OleDb.OleDbConnection MyConnection;
             System.Data.OleDb.OleDbCommand mycommand = new System.Data.OleDb.OleDbCommand();
             string Db_Password = "0000";
-            string database_loc = "'G:\\N016_17 - Dogradnja Cognex DM čitača datamatrix koda na stroju za mjerenje sile uprešavanja\\database_access.accdb'";
+            string database_loc = "'I:\\database_access.accdb'";
+
+            //string database_loc = "'G:\\N016_17 - Dogradnja Cognex DM čitača datamatrix koda na stroju za mjerenje sile uprešavanja\\database_access.accdb'";
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password=" + Db_Password + "; Persist Security Info = False; Data Source=" + database_loc +";";       
 
             MyConnection = new System.Data.OleDb.OleDbConnection(connectionString);
@@ -51,12 +45,18 @@ namespace cognex_tesanj
         {
             InitializeComponent();
 
+            dataGridView1.ColumnCount = 3;
+            dataGridView1.Columns[0].Name = "ID";
+            dataGridView1.Columns[1].Name = "Datamatrix";
+            dataGridView1.Columns[2].Name = "Graf";
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+
             try
             {
-
                 System.Data.OleDb.OleDbConnection MyConnection = CreateConnection();
                 MyConnection.Close();
-
             }
             catch (Exception ex)
             {
@@ -64,11 +64,10 @@ namespace cognex_tesanj
             }
         }
 
-
         private void open_viewer_Click(object sender, EventArgs e)
         {
-            Database_form f2 = new Database_form();
-            f2.Show();
+            LoginForm login = new LoginForm();
+            login.Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -91,6 +90,11 @@ namespace cognex_tesanj
         {
             MessageBox.Show("Button pressed", "Title"); 
             //MessageBox.Show()
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
