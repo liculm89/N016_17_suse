@@ -10,18 +10,25 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace cognex_tesanj
 {
+    public static class Globals
+    {
+        public static string rezultat;
+
+    }
+
+
     static class Program
     {
-      
+        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-                Application.EnableVisualStyles();
+               Application.EnableVisualStyles();
                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Main_form());
+               Application.Run(new Main_form());
        }
     }
 }

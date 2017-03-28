@@ -18,24 +18,7 @@ namespace Cognex.DataMan.SDK
 	public partial class cognex_sample : Form
 	{
 
-
-        public delegate void PassControl(object sender);
-
-        // Create instance (null)
-        public PassControl passControl;
-
-        private void rezultatChange(object sender, System.EventArgs e)
-        {
-            if (passControl != null)
-            {
-                passControl(rezultat);
-                {
-                    this.Hide();
-                }
-            }
-        }
         private ResultCollector _results;
-
 		private SynchronizationContext _syncContext = null;
 		private EthSystemDiscoverer _ethSystemDiscoverer = null;
 		private SerSystemDiscoverer _serSystemDiscoverer = null;
@@ -47,12 +30,13 @@ namespace Cognex.DataMan.SDK
 		private object _listAddItemLock = new object();
 		private GuiLogger _logger;
         public static string rezultat;
-        
-       
-        //public string rez { get { return result_string; } }
 
+        public string InputValue
+        {
+            get { return rezultat; }
+        }
 
-        public cognex_sample(Main_form main_form)
+        public cognex_sample()
 		{
 			InitializeComponent();
            //parent_form.
@@ -133,6 +117,7 @@ namespace Cognex.DataMan.SDK
 			_syncContext.Post(
 				delegate
 				{
+                    Console.WriteLine("From results_complex");
 					ShowResult(e);
 				},
 				null);
@@ -650,15 +635,8 @@ namespace Cognex.DataMan.SDK
 					}
 				}
 			}
-            //rezultat = read_result;
+            rezultat = read_result;
             Console.WriteLine(rezultat);
-
-
-           // send_result();
-            //cognex_tesanj.Main_form form2 = new cognex_tesanj.Main_form();
-            //Form2 frm2 = new Form2();
-           //parent_form.result = read_result;
-           // form2.Show();
 
             AddListItem(string.Format("Complex result arrived: resultId = {0}, read result = {1}", result_id, read_result));
 			Log("Complex result contains", string.Format("{0}", collected_results.ToString()));
@@ -695,7 +673,7 @@ namespace Cognex.DataMan.SDK
 
 			if (read_result != null)
 				lbReadString.Text = read_result;
-            rezultat = read_result;
+                rezultat = read_result;
         }
 
 		private void AddListItem(object item)

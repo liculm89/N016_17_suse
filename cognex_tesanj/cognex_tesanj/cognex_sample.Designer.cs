@@ -216,8 +216,6 @@
             this.lbReadString.Name = "lbReadString";
             this.lbReadString.Size = new System.Drawing.Size(368, 23);
             this.lbReadString.TabIndex = 16;
-            this.lbReadString.TextChanged += new System.EventHandler(this.rezultatChange);
-            this.lbReadString.Click += new System.EventHandler(this.lbReadString_Click);
             // 
             // cognex_sample
             // 
