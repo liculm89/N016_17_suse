@@ -35,6 +35,8 @@
             this.dataManSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.databaseSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblRes = new System.Windows.Forms.Label();
+            this.DMcode = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +67,7 @@
             this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(822, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1120, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -94,17 +96,36 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(246, 72);
+            this.dataGridView1.Location = new System.Drawing.Point(339, 96);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(549, 383);
+            this.dataGridView1.Size = new System.Drawing.Size(769, 414);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // lblRes
+            // 
+            this.lblRes.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.lblRes.AutoSize = true;
+            this.lblRes.Location = new System.Drawing.Point(36, 237);
+            this.lblRes.Name = "lblRes";
+            this.lblRes.Size = new System.Drawing.Size(64, 13);
+            this.lblRes.TabIndex = 8;
+            this.lblRes.Text = "Očitani kod:";
+            // 
+            // DMcode
+            // 
+            this.DMcode.Location = new System.Drawing.Point(106, 234);
+            this.DMcode.Name = "DMcode";
+            this.DMcode.Size = new System.Drawing.Size(143, 20);
+            this.DMcode.TabIndex = 9;
             // 
             // Main_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(822, 522);
+            this.ClientSize = new System.Drawing.Size(1120, 628);
+            this.Controls.Add(this.DMcode);
+            this.Controls.Add(this.lblRes);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.open_viewer);
@@ -129,6 +150,8 @@
         private System.Windows.Forms.ToolStripMenuItem dataManSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem databaseSettingsToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.Label lblRes;
+        private System.Windows.Forms.TextBox DMcode;
     }
 }
 

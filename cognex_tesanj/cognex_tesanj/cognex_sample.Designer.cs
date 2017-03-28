@@ -1,6 +1,6 @@
-﻿namespace cognex_tesanj
+﻿namespace Cognex.DataMan.SDK
 {
-    partial class Cognex_form
+    partial class cognex_sample
     {
         /// <summary>
         /// Required designer variable.
@@ -46,25 +46,17 @@
             this.groupBox2 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.Panel();
             this.lbReadString = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.tbLog = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.cbLoggingEnabled = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picResultImage)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // picResultImage
             // 
             this.picResultImage.Location = new System.Drawing.Point(15, 55);
             this.picResultImage.Name = "picResultImage";
-            this.picResultImage.Size = new System.Drawing.Size(368, 350);
+            this.picResultImage.Size = new System.Drawing.Size(368, 338);
             this.picResultImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picResultImage.TabIndex = 0;
             this.picResultImage.TabStop = false;
@@ -106,8 +98,6 @@
             this.btnTrigger.Size = new System.Drawing.Size(217, 30);
             this.btnTrigger.TabIndex = 5;
             this.btnTrigger.Text = "Trigger";
-            this.btnTrigger.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnTrigger_MouseDown);
-            this.btnTrigger.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnTrigger_MouseUp);
             // 
             // label2
             // 
@@ -124,7 +114,6 @@
             this.txtDeviceIP.ReadOnly = true;
             this.txtDeviceIP.Size = new System.Drawing.Size(157, 20);
             this.txtDeviceIP.TabIndex = 7;
-            this.txtDeviceIP.TextChanged += new System.EventHandler(this.txtDeviceIP_TextChanged);
             // 
             // label3
             // 
@@ -227,65 +216,19 @@
             this.lbReadString.Name = "lbReadString";
             this.lbReadString.Size = new System.Drawing.Size(368, 23);
             this.lbReadString.TabIndex = 16;
+            this.lbReadString.TextChanged += new System.EventHandler(this.rezultatChange);
+            this.lbReadString.Click += new System.EventHandler(this.lbReadString_Click);
             // 
-            // groupBox4
+            // cognex_sample
             // 
-            this.groupBox4.Controls.Add(this.panel2);
-            this.groupBox4.Controls.Add(this.panel1);
-            this.groupBox4.Location = new System.Drawing.Point(15, 464);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(879, 314);
-            this.groupBox4.TabIndex = 20;
-            this.groupBox4.Text = "Dmcc event log";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.tbLog);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 36);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(879, 278);
-            this.panel2.TabIndex = 2;
-            // 
-            // tbLog
-            // 
-            this.tbLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbLog.Location = new System.Drawing.Point(0, 0);
-            this.tbLog.Multiline = true;
-            this.tbLog.Name = "tbLog";
-            this.tbLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbLog.Size = new System.Drawing.Size(879, 278);
-            this.tbLog.TabIndex = 1;
-            this.tbLog.WordWrap = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.cbLoggingEnabled);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(879, 36);
-            this.panel1.TabIndex = 1;
-            // 
-            // cbLoggingEnabled
-            // 
-            this.cbLoggingEnabled.Location = new System.Drawing.Point(18, 10);
-            this.cbLoggingEnabled.Name = "cbLoggingEnabled";
-            this.cbLoggingEnabled.Size = new System.Drawing.Size(105, 17);
-            this.cbLoggingEnabled.TabIndex = 0;
-            this.cbLoggingEnabled.Text = "Logging enabled";
-            // 
-            // MainForm
-            // 
-            this.ClientSize = new System.Drawing.Size(904, 789);
-            this.Controls.Add(this.groupBox4);
+            this.ClientSize = new System.Drawing.Size(904, 459);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MainForm";
+            this.Name = "cognex_sample";
             this.Text = "DataMan SDK Sample Application";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picResultImage)).EndInit();
@@ -293,10 +236,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -321,11 +260,6 @@
         private System.Windows.Forms.Panel groupBox3;
         private System.Windows.Forms.Label lbReadString;
         private System.Windows.Forms.CheckBox cbAutoReconnect;
-        private System.Windows.Forms.Panel groupBox4;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.CheckBox cbLoggingEnabled;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox tbLog;
     }
 }
 

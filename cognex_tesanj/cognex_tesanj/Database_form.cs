@@ -15,7 +15,7 @@ namespace cognex_tesanj
     {
 
         //static string database_loc = "'G:\\N016_17 - Dogradnja Cognex DM čitača datamatrix koda na stroju za mjerenje sile uprešavanja\\database_access.accdb'";
-        static string database_loc = "'I:\\database_access.accdb'";
+        static string database_loc = "'H:\\database_access.accdb'";
         static string Db_Password = "0000";
         static string conString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password="+ Db_Password +"; Persist Security Info = False; Data Source=" + database_loc + ";";
         

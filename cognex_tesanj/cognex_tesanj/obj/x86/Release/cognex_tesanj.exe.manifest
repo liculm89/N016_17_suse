@@ -90,14 +90,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="cognex_tesanj.exe" size="295936">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="cognex_tesanj.exe" size="299008">
       <assemblyIdentity name="cognex_tesanj" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>3hmOYRUKy3P9gGPZDuG2ibRHbsiu20qPYZirmmes1yE=</dsig:DigestValue>
+        <dsig:DigestValue>0Iccm+wKMxqhj3X1RAShXPIhwc4SzkvJs4HNLotJZZY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

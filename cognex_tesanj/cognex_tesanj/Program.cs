@@ -20,7 +20,7 @@ namespace cognex_tesanj
         static void Main()
         {
                 Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
+               Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Main_form());
        }
     }
