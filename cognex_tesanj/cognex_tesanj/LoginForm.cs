@@ -2,6 +2,8 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Drawing;
+
 namespace cognex_tesanj
 {
     public partial class LoginForm : Form
@@ -43,8 +45,11 @@ namespace cognex_tesanj
                 if (logins.Rows[0][0].ToString() == "1")
                 {
                     Console.WriteLine("yast");
-                    this.Hide();
+                    this.Close();
                     Database_form f2 = new Database_form();
+
+                    f2.StartPosition = FormStartPosition.Manual;
+                    f2.Location = new Point(this.ClientSize.Width / 2, this.ClientSize.Height / 2);
 
                     //LoginForm f2 = new LoginForm();
                     f2.Show();

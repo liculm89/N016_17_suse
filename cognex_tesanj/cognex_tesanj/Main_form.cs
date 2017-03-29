@@ -7,6 +7,7 @@ using Cognex.DataMan.SDK.Discovery;
 using Cognex.DataMan.SDK.Utils;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Diagnostics;
 using System.Xml;
 using System.Configuration;
 
@@ -26,7 +27,9 @@ namespace cognex_tesanj
         private bool _autoconnect = false;
         private object _listAddItemLock = new object();
         //public static TextBox DMcode = new TextBox();
-        
+        public bool waitForLog = true;
+
+
         public Main_form()
         {
             InitializeComponent();
@@ -37,18 +40,14 @@ namespace cognex_tesanj
             dataGridView1.Columns[2].Name = "Graf";
             dataGridView1.Columns[3].Name = "TimeStamp";
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.Columns[0].Width = 50;
+            //dataGridView1.Columns.
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
             _syncContext = Cognex.DataMan.SDK.WindowsFormsSynchronizationContext.Current;
-            //lblRes.Text = "";
-            //MessageBox.Show(ConfigurationManager.AppSettings["db_loc"]);
-            //ConfigurationManager.AppSettings["db_loc"] = "aaaauf";
-            
-            //MessageBox.Show(ConfigurationManager.AppSettings["db_loc"]);
 
             cbLiveDisplay.CheckedChanged += new System.EventHandler(this.cbLiveDisplay_CheckedChanged);
             
-
             try
             {
                 System.Data.OleDb.OleDbConnection MyConnection = CreateConnection();
@@ -96,7 +95,16 @@ namespace cognex_tesanj
             {
                 this.Invoke(new EventHandler(delegate
                 {
-                    DMcode.Text = rez;
+                    if (waitForLog)
+                    { 
+                        DMcode.Text = rez;
+                        WaitForLogForm waitForm = new WaitForLogForm(this, rez);
+                        waitForm.StartPosition = FormStartPosition.Manual;
+                        waitForm.Location = new Point(this.ClientSize.Width / 2, this.ClientSize.Height / 2);
+                        waitForm.Show();
+                       // waitForLog = false;
+                     }
+                    //DMcode.Text = rez;
                 }));
             }
         }
@@ -369,7 +377,8 @@ namespace cognex_tesanj
        
 
         static string Db_Password = "0000";
-        static string database_loc = "'H:\\database_access.accdb'";
+        //static string database_loc = "'H:\\database_access.accdb'";
+        static string database_loc = Globals.database_loc;
         static string conString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password=" + Db_Password + "; Persist Security Info = False; Data Source=" + database_loc + ";";
 
 
@@ -426,6 +435,8 @@ namespace cognex_tesanj
         private void open_viewer_Click(object sender, EventArgs e)
         {
             LoginForm login = new LoginForm();
+            login.StartPosition = FormStartPosition.Manual;
+            login.Location = new Point(this.ClientSize.Width / 2, this.ClientSize.Height / 2);
             login.Show();
         }
 
@@ -436,15 +447,24 @@ namespace cognex_tesanj
 
         private void button1_Click(object sender, EventArgs e)
         {
-           // Cognex_form cognex_form = new Cognex_form();
-         
-            cognex_sample sample = new cognex_sample();
-            //sample.
+            Process ExternalProcess = new Process();
+            ExternalProcess.StartInfo.FileName = @"cmd.exe";
+            ExternalProcess.StartInfo.Arguments = @"/c start SetupTool.exe";
+            ExternalProcess.StartInfo.UseShellExecute = false;
+            ExternalProcess.StartInfo.WorkingDirectory = @"C:\Program Files\Cognex\DataMan\DataMan Software v5.6.3_SR2\";
+            ExternalProcess.StartInfo.UseShellExecute = false;
+            ExternalProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
-            //DMcode.Text = sample.InputValue;
+            try
+            {
+                ExternalProcess.Start();
+                ExternalProcess.WaitForExit();
+            }
 
-            sample.Show();
-            //DMcode.Text = sample.getResult();
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
 
         }
 
@@ -469,18 +489,6 @@ namespace cognex_tesanj
 
         }
 
-        private void testTrigger_Click_1(object sender, EventArgs e)
-        {/*
-            try
-            {
-                _system.SendCommand("TRIGGER ON");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
-            }*/
-        }
-
         private void testTrigger_MouseDown(object sender, MouseEventArgs e)
         {
             try
@@ -495,19 +503,19 @@ namespace cognex_tesanj
 
         private void testTrigger_MouseUp(object sender, MouseEventArgs e)
         {
-            try
+            /*try
             {
                 _system.SendCommand("TRIGGER OFF");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to send TRIGGER OFF command: " + ex.ToString());
-            }
+            }*/
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            this.DMcode.Text = "Auuu";
+            this.DMcode.Text = "";
         }
 
         private void Main_form_FormClosing(object sender, FormClosingEventArgs e)
@@ -569,6 +577,41 @@ namespace cognex_tesanj
                 MessageBox.Show(ex.Message);
                 con.Close();
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            toolStripStatusLabel1.Text = DateTime.Now.ToString("MM-dd-yyyy h:mmtt:ss");
+        }
+
+
+
+        private void TriggerTimer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                _system.SendCommand("TRIGGER ON");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
+            }
+        }
+
+        private void startAuto_Click(object sender, EventArgs e)
+        {
+            TriggerTimer.Start();
+        }
+
+        private void stopAuto_Click(object sender, EventArgs e)
+        {
+            TriggerTimer.Stop();
+        }
+
+        private void DMcode_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

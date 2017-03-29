@@ -90,24 +90,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="cognex_tesanj.exe" size="304640">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="cognex_tesanj.exe" size="313344">
       <assemblyIdentity name="cognex_tesanj" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>qSxfn650B1OswQvtdoD2ClfsIWnUsXRUuUXgxIk1pvM=</dsig:DigestValue>
+        <dsig:DigestValue>gJtN6Y5Mp3IBVd6OZQZGToKVA4W7raNkpJO2fRrZtnE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="cognex_tesanj.exe.config" size="257">
+  <file name="cognex_tesanj.exe.config" size="501">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>bvQody6zCmXHHcT1WV6qFs/OhuFAkav7W317AdwmQYI=</dsig:DigestValue>
+      <dsig:DigestValue>NpJTv5e3ko4fwqF10pfuVgiODnBy4hh7bUXwc0qZdpQ=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

@@ -38,6 +38,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ts_text = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -64,11 +67,10 @@
             this.graf_txt.Name = "graf_txt";
             this.graf_txt.Size = new System.Drawing.Size(312, 20);
             this.graf_txt.TabIndex = 2;
-            this.graf_txt.TextChanged += new System.EventHandler(this.graf_txt_TextChanged);
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(169, 73);
+            this.addBtn.Location = new System.Drawing.Point(169, 104);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(75, 23);
             this.addBtn.TabIndex = 3;
@@ -88,7 +90,7 @@
             // 
             // updateBtn
             // 
-            this.updateBtn.Location = new System.Drawing.Point(250, 73);
+            this.updateBtn.Location = new System.Drawing.Point(250, 104);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(75, 23);
             this.updateBtn.TabIndex = 5;
@@ -98,7 +100,7 @@
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(169, 102);
+            this.deleteBtn.Location = new System.Drawing.Point(169, 133);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(75, 23);
             this.deleteBtn.TabIndex = 6;
@@ -114,7 +116,6 @@
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Graf";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -127,6 +128,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ts_text);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.datamatrix_txt);
             this.groupBox1.Controls.Add(this.deleteBtn);
             this.groupBox1.Controls.Add(this.label1);
@@ -136,21 +139,46 @@
             this.groupBox1.Controls.Add(this.addBtn);
             this.groupBox1.Location = new System.Drawing.Point(685, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(500, 141);
+            this.groupBox1.Size = new System.Drawing.Size(500, 178);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Izmjena podataka";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // Form2
+            // ts_text
+            // 
+            this.ts_text.Location = new System.Drawing.Point(166, 74);
+            this.ts_text.Name = "ts_text";
+            this.ts_text.Size = new System.Drawing.Size(311, 20);
+            this.ts_text.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(82, 81);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Datum, Vrijeme";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(770, 276);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // Database_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1197, 546);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.retrieveBtn);
-            this.Name = "Form2";
+            this.Name = "Database_form";
             this.Text = "Editiranje databaze";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -171,5 +199,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox ts_text;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
     }
 }

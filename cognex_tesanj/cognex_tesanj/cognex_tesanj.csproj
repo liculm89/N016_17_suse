@@ -153,6 +153,12 @@
     <Compile Include="Program_sample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynchronizationContext.cs" />
+    <Compile Include="WaitForLogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitForLogForm.Designer.cs">
+      <DependentUpon>WaitForLogForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="cognex_sample.resx">
       <DependentUpon>cognex_sample.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,9 +185,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WaitForLogForm.resx">
+      <DependentUpon>WaitForLogForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="cognex_tesanj_TemporaryKey.pfx" />
-    <None Include="conf.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
