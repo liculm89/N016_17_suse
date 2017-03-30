@@ -39,24 +39,26 @@
             this.label3 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.count = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblDMcode
             // 
             this.lblDMcode.AutoSize = true;
-            this.lblDMcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblDMcode.Location = new System.Drawing.Point(263, 93);
+            this.lblDMcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblDMcode.Location = new System.Drawing.Point(275, 112);
             this.lblDMcode.Name = "lblDMcode";
             this.lblDMcode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblDMcode.Size = new System.Drawing.Size(142, 31);
+            this.lblDMcode.Size = new System.Drawing.Size(114, 25);
             this.lblDMcode.TabIndex = 0;
             this.lblDMcode.Text = "lblDMcode";
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.OrangeRed;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(52, 240);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.Location = new System.Drawing.Point(82, 327);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(368, 105);
             this.button1.TabIndex = 1;
@@ -67,10 +69,10 @@
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblTime.Location = new System.Drawing.Point(265, 202);
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblTime.Location = new System.Drawing.Point(275, 237);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(60, 24);
+            this.lblTime.Size = new System.Drawing.Size(70, 25);
             this.lblTime.TabIndex = 2;
             this.lblTime.Text = "label1";
             // 
@@ -78,11 +80,11 @@
             // 
             this.lblGraph.AutoSize = true;
             this.lblGraph.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblGraph.Location = new System.Drawing.Point(264, 147);
+            this.lblGraph.Location = new System.Drawing.Point(275, 174);
             this.lblGraph.Name = "lblGraph";
-            this.lblGraph.Size = new System.Drawing.Size(194, 25);
+            this.lblGraph.Size = new System.Drawing.Size(164, 25);
             this.lblGraph.TabIndex = 3;
-            this.lblGraph.Text = "Waiting for graph...";
+            this.lblGraph.Text = "Čekanje grafa...";
             // 
             // timer1
             // 
@@ -92,8 +94,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Khaki;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(131, 99);
+            this.label1.Location = new System.Drawing.Point(143, 112);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 25);
             this.label1.TabIndex = 4;
@@ -102,8 +105,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Khaki;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(201, 147);
+            this.label2.Location = new System.Drawing.Point(210, 174);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 25);
             this.label2.TabIndex = 5;
@@ -112,8 +116,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Khaki;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(21, 201);
+            this.label3.Location = new System.Drawing.Point(30, 237);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(239, 25);
             this.label3.TabIndex = 6;
@@ -128,35 +133,51 @@
             // count
             // 
             this.count.AutoSize = true;
-            this.count.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.count.ForeColor = System.Drawing.Color.OrangeRed;
-            this.count.Location = new System.Drawing.Point(116, 23);
+            this.count.BackColor = System.Drawing.Color.Aquamarine;
+            this.count.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.count.ForeColor = System.Drawing.Color.Red;
+            this.count.Location = new System.Drawing.Point(101, 16);
             this.count.Name = "count";
-            this.count.Size = new System.Drawing.Size(269, 55);
+            this.count.Size = new System.Drawing.Size(358, 73);
             this.count.TabIndex = 7;
             this.count.Text = "Countdown";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.count);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.lblDMcode);
+            this.groupBox1.Controls.Add(this.lblTime);
+            this.groupBox1.Controls.Add(this.lblGraph);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(560, 438);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
             // 
             // WaitForLogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.ClientSize = new System.Drawing.Size(485, 357);
-            this.Controls.Add(this.count);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblGraph);
-            this.Controls.Add(this.lblTime);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.lblDMcode);
+            this.BackColor = System.Drawing.Color.MintCream;
+            this.ClientSize = new System.Drawing.Size(584, 462);
+            this.Controls.Add(this.groupBox1);
             this.Location = new System.Drawing.Point(100, 100);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(600, 500);
             this.Name = "WaitForLogForm";
             this.Text = "Čekanje Grafa";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WaitForLogForm_FormClosing);
             this.Load += new System.EventHandler(this.WaitForLogForm_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -172,5 +193,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label count;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

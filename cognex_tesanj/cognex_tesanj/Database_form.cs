@@ -13,14 +13,10 @@ namespace cognex_tesanj
 {
     public partial class Database_form : Form
     {
-
-        //static string database_loc = "'G:\\N016_17 - Dogradnja Cognex DM čitača datamatrix koda na stroju za mjerenje sile uprešavanja\\database_access.accdb'";
-        //static string database_loc = "'H:\\database_access.accdb'";
         static string database_loc = Globals.database_loc;
         static string Db_Password = "0000";
         static string conString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password="+ Db_Password +"; Persist Security Info = False; Data Source=" + database_loc + ";";
         
-
         OleDbConnection con = new OleDbConnection(conString);
         OleDbCommand cmd;
         OleDbDataAdapter adapter;
@@ -29,7 +25,6 @@ namespace cognex_tesanj
         public Database_form()
         {
             InitializeComponent();
-
             dataGridView1.ColumnCount = 4;
             dataGridView1.Columns[0].Name = "ID";
             dataGridView1.Columns[1].Name = "Datamatrix";
@@ -37,17 +32,16 @@ namespace cognex_tesanj
             dataGridView1.Columns[3].Name = "Timestamp";
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.Columns[0].Width = 50;
-            //SELECTION MODE
+            dataGridView1.Columns[1].Width = 100;
+            dataGridView1.Columns[2].Width = 340;
+
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
-            //String timeStamp = DateTime.Now.ToString();
-           // Console.WriteLine(timeStamp);
         }
 
         //INSERT INTO DB
         private void add(string dm, string graf, string ts)
         {
-            //String sql = "INSERT INTO Popis_komada(Datamatrix,Graf,Timestamp) VALUES(@Datamatrix,@Graf,@Timestamp)";
             String sql = "INSERT INTO Popis_komada(Datamatrix,Graf,DatumVrijeme) VALUES(@Datamatrix,@Graf,@DatumVrijeme)";
             cmd = new OleDbCommand(sql, con);
 
@@ -152,11 +146,11 @@ namespace cognex_tesanj
                 adapter.DeleteCommand = con.CreateCommand();
                 adapter.DeleteCommand.CommandText = sql;
                 //PROMPT FOR CONFIRMATION
-                if (MessageBox.Show("Sigurno želiš izbrisati zapis??", "DELETE", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (MessageBox.Show("Izbrisati odabir?", "DELETE", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     if (cmd.ExecuteNonQuery() > 0)
                     {
-                        MessageBox.Show("Brisanje zapisa uspješno izvršeno");
+                        MessageBox.Show("Uspješno izvršeno");
                     }
                 }
                 con.Close();
@@ -223,5 +217,40 @@ namespace cognex_tesanj
             }
         }
 
+        private void Database_form_Load(object sender, EventArgs e)
+        {
+            retrieve();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            //SQL STMT
+            String sql = "SELECT * FROM Popis_komada WHERE Datamatrix LIKE '" + textBox1.Text + "%'";
+            cmd = new OleDbCommand(sql, con);
+
+            try
+            {
+                con.Open();
+                adapter = new OleDbDataAdapter(cmd);
+                adapter.Fill(dt);
+                //LOOP THRU DT
+                foreach (DataRow row in dt.Rows)
+                {
+                    populate(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString());
+                }
+                dt.PrimaryKey = new DataColumn[] { dt.Columns["ID"] };
+
+                con.Close();
+
+                //CLEAR DT 
+                dt.Rows.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                con.Close();
+            }
+        }
     }
 }

@@ -127,4 +127,49 @@
   <data name="login1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\login1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="adjustlevels_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\adjustlevels.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="camera_photo_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\camera-photo.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="go_parent_folder_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\go-parent-folder.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="media_playback_start_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\media-playback-start.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="media_playback_stop_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\media-playback-stop.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="novi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\novi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="system_save_session_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\system-save-session.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="umbrello_diagram_deployment_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\umbrello_diagram_deployment.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="view_refresh_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\view-refresh.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="window_close_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\window-close.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ajdust_large" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ajdust_large.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="umbr_large" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\umbr_large.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dialog_ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dialog_ok.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sinel_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sinel logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

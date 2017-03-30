@@ -8,6 +8,8 @@ using Cognex.DataMan.SDK.Utils;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Diagnostics;
+using System.Data;
+using System.Collections.Generic;
 using System.Xml;
 using System.Configuration;
 
@@ -33,14 +35,16 @@ namespace cognex_tesanj
         public Main_form()
         {
             InitializeComponent();
-
+            timer1.Interval = Int32.Parse(Globals.trigger_timer);
             dataGridView1.ColumnCount = 4;
             dataGridView1.Columns[0].Name = "ID";
             dataGridView1.Columns[1].Name = "Datamatrix";
             dataGridView1.Columns[2].Name = "Graf";
-            dataGridView1.Columns[3].Name = "TimeStamp";
+            dataGridView1.Columns[3].Name = "Datum/Vrijeme";
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.Columns[0].Width = 50;
+            dataGridView1.Columns[1].Width = 100;
+            dataGridView1.Columns[2].Width = 390;
             //dataGridView1.Columns.
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
@@ -59,7 +63,6 @@ namespace cognex_tesanj
             }
 
             dataGridView1.Rows.Clear();
-            //SQL STMT
             String sql = "SELECT * FROM Popis_komada";
             cmd = new OleDbCommand(sql, con);
             
@@ -68,7 +71,7 @@ namespace cognex_tesanj
                 con.Open();
                 adapter = new OleDbDataAdapter(cmd);
                 adapter.Fill(dt);
-                //LOOP THRU DT
+
                 foreach (DataRow row in dt.Rows)
                 {
                     populate(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString());
@@ -76,8 +79,32 @@ namespace cognex_tesanj
                 dt.PrimaryKey = new DataColumn[] { dt.Columns["ID"] };
 
                 con.Close();
+                dt.Rows.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                con.Close();
+            }
+        }
 
-                //CLEAR DT 
+        private void retrieve()
+        {
+            dataGridView1.Rows.Clear();
+            String sql = "SELECT * FROM Popis_komada";
+            cmd = new OleDbCommand(sql, con);
+            try
+            {
+                con.Open();
+                adapter = new OleDbDataAdapter(cmd);
+                adapter.Fill(dt);
+                foreach (DataRow row in dt.Rows)
+                {
+                    populate(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString());
+                }
+                dt.PrimaryKey = new DataColumn[] { dt.Columns["ID"] };
+          
+                con.Close();
                 dt.Rows.Clear();
             }
             catch (Exception ex)
@@ -90,7 +117,6 @@ namespace cognex_tesanj
         public void setText(String rez)
         {
             Console.WriteLine("setting text");
-            //DMcode.TextChanged += new EventHandler(DMCode_TextChanged);
             if (this.InvokeRequired)
             {
                 this.Invoke(new EventHandler(delegate
@@ -102,18 +128,12 @@ namespace cognex_tesanj
                         waitForm.StartPosition = FormStartPosition.Manual;
                         waitForm.Location = new Point(this.ClientSize.Width / 2, this.ClientSize.Height / 2);
                         waitForm.Show();
-                       // waitForLog = false;
+                        waitForLog = false;
                      }
                     //DMcode.Text = rez;
                 }));
             }
         }
-
-        private void DMCode_TextChanged(object sender, EventArgs e)
-        {
-            //Console.WriteLine("changed");
-        }
-
         private EthSystemDiscoverer.SystemInfo sysinfo;
 
         /*
@@ -139,6 +159,8 @@ namespace cognex_tesanj
             _ethSystemDiscoverer.Dispose();
             _ethSystemDiscoverer = null;
         }
+
+        #region Dataman functions
 
         private void OnEthSystemDiscovered(EthSystemDiscoverer.SystemInfo systemInfo)
         {
@@ -342,6 +364,9 @@ namespace cognex_tesanj
 
         private void cbLiveDisplay_CheckedChanged(object sender, EventArgs e)
         {
+
+            if (_system != null)
+            { 
             try
             {
                 if (cbLiveDisplay.Checked)
@@ -367,17 +392,22 @@ namespace cognex_tesanj
             {
                 MessageBox.Show("Failed to set live image mode: " + ex.ToString());
             }
+          }
+
+            else
+            {
+                MessageBox.Show("Nije moguće pokrenuti automatsko očitavanje\n jer nije ostvarena komunikacija sa čitačem!", "Greška komunikacije");
+            }
         }
         //EthSystemConnector conn = new EthSystemConnector(168.254.179.54, 22);
 
+        #endregion
 
         DataSet myset = new DataSet("Excel import");
         DataTable dataTable = new DataTable("excelImport");
-        OleDbDataAdapter dataAdapter;
+       // OleDbDataAdapter dataAdapter;
        
-
         static string Db_Password = "0000";
-        //static string database_loc = "'H:\\database_access.accdb'";
         static string database_loc = Globals.database_loc;
         static string conString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password=" + Db_Password + "; Persist Security Info = False; Data Source=" + database_loc + ";";
 
@@ -392,11 +422,8 @@ namespace cognex_tesanj
 
         public static System.Data.OleDb.OleDbConnection CreateConnection()
         {
-
             System.Data.OleDb.OleDbConnection MyConnection;
             System.Data.OleDb.OleDbCommand mycommand = new System.Data.OleDb.OleDbCommand();
-            //string Db_Password = "0000";
-            //string database_loc = "'H:\\database_access.accdb'";
 
             //string database_loc = "'G:\\N016_17 - Dogradnja Cognex DM čitača datamatrix koda na stroju za mjerenje sile uprešavanja\\database_access.accdb'";
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password=" + Db_Password + "; Persist Security Info = False; Data Source=" + database_loc +";";       
@@ -422,27 +449,12 @@ namespace cognex_tesanj
             dataGridView1.Rows.Add(id, dm, graf, ts);
         }
 
- 
-
-      
-      /*  private void Main_form_Load(object sender, EventArgs e)
-        {
-            //MessageBox.Show(result);
-            //Console.WriteLine(result);
-
-        }*/
-
         private void open_viewer_Click(object sender, EventArgs e)
         {
             LoginForm login = new LoginForm();
             login.StartPosition = FormStartPosition.Manual;
             login.Location = new Point(this.ClientSize.Width / 2, this.ClientSize.Height / 2);
             login.Show();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -454,7 +466,6 @@ namespace cognex_tesanj
             ExternalProcess.StartInfo.WorkingDirectory = @"C:\Program Files\Cognex\DataMan\DataMan Software v5.6.3_SR2\";
             ExternalProcess.StartInfo.UseShellExecute = false;
             ExternalProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
             try
             {
                 ExternalProcess.Start();
@@ -465,39 +476,25 @@ namespace cognex_tesanj
             {
                 Console.WriteLine(ex);
             }
-
-        }
-
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Button pressed", "Title"); 
-            //MessageBox.Show()
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void btnForm1_Click(object sender, System.EventArgs e)
-        {
-
         }
 
         private void testTrigger_MouseDown(object sender, MouseEventArgs e)
         {
-            try
+            if (_system != null)
             {
-                _system.SendCommand("TRIGGER ON");
+                try
+                {
+                    _system.SendCommand("TRIGGER ON");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
+                TriggerTimer.Stop();
+                MessageBox.Show("Nije moguće pokrenuti automatsko očitavanje\n jer nije ostvarena komunikacija sa čitačem!", "Greška komunikacije");
             }
         }
 
@@ -524,34 +521,15 @@ namespace cognex_tesanj
             _autoconnect = false;
 
             if (null != _system && _system.State == Cognex.DataMan.SDK.ConnectionState.Connected)
-                _system.Disconnect();
+            _system.Disconnect();
 
             _ethSystemDiscoverer.Dispose();
             _ethSystemDiscoverer = null;
-
-           // _serSystemDiscoverer.Dispose();
-         //   _serSystemDiscoverer = null;
-        }
-
-        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            //SQL STMT
             String sql = "SELECT * FROM Popis_komada WHERE Datamatrix LIKE '"+ textBox1.Text + "%'";
             cmd = new OleDbCommand(sql, con);
 
@@ -568,8 +546,6 @@ namespace cognex_tesanj
                 dt.PrimaryKey = new DataColumn[] { dt.Columns["ID"] };
 
                 con.Close();
-
-                //CLEAR DT 
                 dt.Rows.Clear();
             }
             catch (Exception ex)
@@ -585,33 +561,80 @@ namespace cognex_tesanj
             toolStripStatusLabel1.Text = DateTime.Now.ToString("MM-dd-yyyy h:mmtt:ss");
         }
 
-
-
         private void TriggerTimer_Tick(object sender, EventArgs e)
         {
-            try
+            if (_system != null)
             {
-                _system.SendCommand("TRIGGER ON");
+                try
+                {
+                    _system.SendCommand("TRIGGER ON");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
+                TriggerTimer.Stop();
+                MessageBox.Show("Nije moguće pokrenuti automatsko očitavanje\n jer nije ostvarena komunikacija sa čitačem!", "Greška komunikacije");
             }
         }
 
         private void startAuto_Click(object sender, EventArgs e)
         {
-            TriggerTimer.Start();
+
+                TriggerTimer.Start();
+
         }
 
         private void stopAuto_Click(object sender, EventArgs e)
         {
+            waitForLog = true;
             TriggerTimer.Stop();
         }
 
-        private void DMcode_TextChanged_1(object sender, EventArgs e)
+        private void postavkeAplikacijeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SettingsEdit settings = new SettingsEdit();
+            settings.Location = new Point(this.ClientSize.Width / 2, this.ClientSize.Height / 2);
+            settings.Show();
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            retrieve();
+            textBox1.Text = "";
+        }
+
+        private void dataManSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process ExternalProcess = new Process();
+            ExternalProcess.StartInfo.FileName = @"cmd.exe";
+            ExternalProcess.StartInfo.Arguments = @"/c start SetupTool.exe";
+            ExternalProcess.StartInfo.UseShellExecute = false;
+            ExternalProcess.StartInfo.WorkingDirectory = @"C:\Program Files\Cognex\DataMan\DataMan Software v5.6.3_SR2\";
+            ExternalProcess.StartInfo.UseShellExecute = false;
+            ExternalProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+            try
+            {
+                ExternalProcess.Start();
+                ExternalProcess.WaitForExit();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        private void databaseSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoginForm login = new LoginForm();
+            login.StartPosition = FormStartPosition.Manual;
+            login.Location = new Point(this.ClientSize.Width / 2, this.ClientSize.Height / 2);
+            login.Show();
         }
     }
 }

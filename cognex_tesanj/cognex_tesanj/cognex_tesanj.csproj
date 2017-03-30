@@ -124,6 +124,11 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frRecon.Designer.cs" />
+    <Compile Include="frRecon1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frRecon.resx</DependentUpon>
+    </Compile>
     <Compile Include="GuiLogger.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -152,6 +157,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Program_sample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingsEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsEdit.Designer.cs">
+      <DependentUpon>SettingsEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="SynchronizationContext.cs" />
     <Compile Include="WaitForLogForm.cs">
       <SubType>Form</SubType>
@@ -162,7 +173,10 @@
     <EmbeddedResource Include="cognex_sample.resx">
       <DependentUpon>cognex_sample.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frRecon.resx" />
+    <EmbeddedResource Include="frRecon.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>frRecon1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +199,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SettingsEdit.resx">
+      <DependentUpon>SettingsEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WaitForLogForm.resx">
       <DependentUpon>WaitForLogForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -270,6 +287,57 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\login1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\adjustlevels.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\novi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\go-parent-folder.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camera-photo.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\adjustlevels.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view-refresh.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\umbrello_diagram_deployment.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\system-save-session.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\media-playback-stop.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\media-playback-start.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\window-close.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\umbr_large.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ajdust_large.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sinel logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dialog_ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

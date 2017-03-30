@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,11 @@ namespace cognex_tesanj
 {
     public partial class WaitForLogForm : Form
     {
-        static string graph = "Waiting for graph...";
+        static string graph = "Čekanje grafa...";
         static string timestamp = null;
         static string dm = null;
-        static int counter = 60;
+        static int counter = Int32.Parse(Globals.timeout_counter);
+        static string watch_dir = Globals.external_archive_loc;
 
         static string database_loc = Globals.database_loc;
         static string Db_Password = "0000";
@@ -63,9 +65,9 @@ namespace cognex_tesanj
             InitializeComponent();
 
             mainForm = mf as Main_form;
-            counter = 60;
+            //counter = 60;
 
-             count.Text = "Timeout: " + counter + " s";
+            count.Text = "Timeout: " + counter + " s";
             lblDMcode.Text = DMcode;
             dm = DMcode;
             lblTime.Text = DateTime.Now.ToString("MM-dd-yyyy h:mmtt:ss");
@@ -79,7 +81,11 @@ namespace cognex_tesanj
 
         private void WaitForLogForm_Load(object sender, EventArgs e)
         {
-            FileSystemWatcher fw = new FileSystemWatcher(@"C:\Temp");
+            //FileSystemWatcher fw = new FileSystemWatcher(@"C:\Digiforce_arhiva");
+            FileSystemWatcher fw = new FileSystemWatcher(watch_dir);
+
+            Console.WriteLine(watch_dir);
+            fw.IncludeSubdirectories = true; 
             fw.Created += fileSystemWatcher_Created;
             fw.EnableRaisingEvents = true;
         }
@@ -87,10 +93,21 @@ namespace cognex_tesanj
         private void fileSystemWatcher_Created(object sender, FileSystemEventArgs e)
         {
             Console.WriteLine("File created!");
+
             FileInfo file = new FileInfo(e.FullPath);
+            string fileloc = Path.GetDirectoryName(e.Name);
             Console.WriteLine(file.Name);
-            graph = file.Name.ToString();
-  
+            Console.WriteLine(fileloc);
+
+            string imefile = file.Name;
+            bool presa1 = imefile.Contains("419393");
+            Console.WriteLine("Contains: " + presa1);
+
+            if(presa1)
+            {
+                graph = watch_dir + "\\" + fileloc + "\\" + file.Name.ToString();
+            }
+
         }
 
         private void changeGraph()
@@ -102,7 +119,7 @@ namespace cognex_tesanj
         {
             changeGraph();
 
-            if (lblGraph.Text !=  "Waiting for graph..." && timestamp != null && dm != null )
+            if (lblGraph.Text !=  "Čekanje grafa..." && timestamp != null && dm != null )
             {
                 timer1.Stop();
                 mainForm.waitForLog = true;
@@ -115,7 +132,7 @@ namespace cognex_tesanj
 
         private void WaitForLogForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-             graph = "Waiting for graph...";
+             graph = "Čekanje grafa...";
              timestamp = null;
              dm = null;
         }
@@ -127,6 +144,8 @@ namespace cognex_tesanj
             if (counter == 0)
             {
                 timer2.Stop();
+                mainForm.waitForLog = true;
+                counter = Int32.Parse(Globals.timeout_counter);
                 this.Close();
                 count.Text = counter.ToString();
             }

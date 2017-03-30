@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6"/>
+    </startup>
+  <appSettings>
+    <add key="db_loc" value="'H:\\database_access.accdb'" />
+    <add key="archive_loc" value="H:\\Archive" />
+    <add key="external_archive_loc" value="C:\Digiforce_arhiva" />
+    <add key="Export_folder" value="C:\Export" />
+    <add key="db_passwd" value="0000" />
+    <add key="timeout_counter" value="20" />
+    <add key="trigger" value="600" />
+  </appSettings>
+</configuration>

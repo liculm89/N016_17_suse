@@ -18,6 +18,8 @@ namespace cognex_tesanj
         public static string external_archive_loc = ConfigurationManager.AppSettings["external_archive_loc"];
         public static string export_folder = ConfigurationManager.AppSettings["Export_folder"];
         public static string db_passwd = ConfigurationManager.AppSettings["db_passwd"];
+        public static string timeout_counter = ConfigurationManager.AppSettings["timeout_counter"];
+        public static string trigger_timer = ConfigurationManager.AppSettings["trigger"];
     }
 
 
