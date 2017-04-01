@@ -31,6 +31,7 @@ namespace cognex_tesanj
         //public static TextBox DMcode = new TextBox();
         public bool waitForLog = true;
 
+        public Image red_dot = Properties.Resources.yast_red_dot;
 
         public Main_form()
         {
@@ -44,11 +45,16 @@ namespace cognex_tesanj
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.Columns[0].Width = 50;
             dataGridView1.Columns[1].Width = 100;
-            dataGridView1.Columns[2].Width = 390;
+            dataGridView1.Columns[2].Width = 500;
             //dataGridView1.Columns.
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
             _syncContext = Cognex.DataMan.SDK.WindowsFormsSynchronizationContext.Current;
+
+            testTrigger.Enabled = false;
+            startAuto.Enabled = false;
+            stopAuto.Enabled = false;
+            cbLiveDisplay.Enabled = false;
 
             cbLiveDisplay.CheckedChanged += new System.EventHandler(this.cbLiveDisplay_CheckedChanged);
             
@@ -146,6 +152,8 @@ namespace cognex_tesanj
             _ethSystemDiscoverer.SystemDiscovered += new EthSystemDiscoverer.SystemDiscoveredHandler(OnEthSystemDiscovered);
             _ethSystemDiscoverer.Discover();
             Console.WriteLine("connector::::::::::::::::::::::::::");
+
+            dataman_status.Text = ("Povezivanje s čitačem...");
         }
 
         private void MainForm_FormClosing(object sender, EventArgs e)
@@ -171,25 +179,27 @@ namespace cognex_tesanj
             }
             catch (Exception ex)
             {
+
                 Console.WriteLine("Failed to connect: " + ex.ToString());
             }
         }
 
         private void connect()
             {
-                try
-                {
-                    EthSystemDiscoverer.SystemInfo eth_system_info = sysinfo as EthSystemDiscoverer.SystemInfo;
-                    EthSystemConnector conn = new EthSystemConnector(eth_system_info.IPAddress, eth_system_info.Port);
+            try
+            {
+                EthSystemDiscoverer.SystemInfo eth_system_info = sysinfo as EthSystemDiscoverer.SystemInfo;
+                EthSystemConnector conn = new EthSystemConnector(eth_system_info.IPAddress, eth_system_info.Port);
 
-                 conn.UserName = "admin";
-                 conn.Password = "";
+                conn.UserName = "admin";
+                conn.Password = "";
                 _connector = conn;
                 _system = new DataManSystem(_connector);
-                _system.DefaultTimeout = 5000;
+                _system.DefaultTimeout = 1500;
                 Console.WriteLine("connecting..");
                 _system.SystemConnected += new SystemConnectedHandler(OnSystemConnected);
                 _system.KeepAliveResponseMissed += new KeepAliveResponseMissedHandler(OnKeepAliveResponseMissed);
+                _system.SystemDisconnected += new SystemDisconnectedHandler(OnSystemDisconnected);
 
                 ResultTypes requested_result_types = ResultTypes.ReadXml | ResultTypes.Image | ResultTypes.ImageGraphics | ResultTypes.ReadString;
                 _results = new ResultCollector(_system, requested_result_types);
@@ -197,6 +207,37 @@ namespace cognex_tesanj
                 _results.SimpleResultDropped += Results_SimpleResultDropped;
                 _system.SetKeepAliveOptions(true, 3000, 1000);
                 _system.Connect();
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new EventHandler(delegate
+                    {
+                        if (_system != null)
+                        {
+                            testTrigger.Enabled = true;
+                            startAuto.Enabled = true;
+                            stopAuto.Enabled = true;
+                            cbLiveDisplay.Enabled = true;
+                        }
+                    }));
+                }
+                if (_system != null)
+                { 
+                try
+                {
+                    testTrigger.Enabled = true;
+                    startAuto.Enabled = true;
+                    stopAuto.Enabled = true;
+                    cbLiveDisplay.Enabled = true;
+                        dataman_slika.Image = global::cognex_tesanj.Properties.Resources.yast_green_dot;
+                        this.dataman_slika.Name = "dataman_slika";
+                        this.dataman_slika.Size = new System.Drawing.Size(16, 17);
+                        this.dataman_slika.Text = "slika_status";
+                        dataman_status.Text = "Upješno povezan, ready";
+                    }
+                catch
+                { }
+                
+                }
 
                 try
                 {
@@ -207,15 +248,131 @@ namespace cognex_tesanj
                     MessageBox.Show("Failed to connect: " + ex.ToString());
                 }
             }
+            
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to connect: " + ex.ToString());
             }
         }
 
+        private void disconnect()
+        {
+            try
+            {
+                if (_system != null)
+
+                {
+                    _autoconnect = false;
+                    _system.Disconnect();
+                    Console.WriteLine("Disconnected");
+                    CleanupConnection();
+
+                    _results.ClearCachedResults();
+                    _results = null;
+                }
+
+
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new EventHandler(delegate
+                    {
+                        if (_system != null)
+                        {
+                            testTrigger.Enabled = false;
+                            startAuto.Enabled = false;
+                            stopAuto.Enabled = false;
+                            cbLiveDisplay.Enabled = false;
+                        }
+                    }));
+                }
+
+
+                try {
+                    testTrigger.Enabled = false;
+                    startAuto.Enabled = false;
+                    stopAuto.Enabled = false;
+                    cbLiveDisplay.Enabled = false;
+                }
+                    catch{ }
+
+                try
+                {
+                    dataman_slika.Image = global::cognex_tesanj.Properties.Resources.yast_red_dot;
+                    dataman_status.Text = "Konekcija ugašena";
+                    this.dataman_slika.Name = "dataman_slika";
+                    this.dataman_slika.Size = new System.Drawing.Size(16, 17);
+                    this.dataman_slika.Text = "slika_status";
+                    //dataman_status.Text = "Greška u konekciji";
+                }
+                catch
+                { }
+
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new EventHandler(delegate
+                    {
+                        dataman_slika.Image = global::cognex_tesanj.Properties.Resources.yast_red_dot;
+                        dataman_status.Text = "Konekcija ugašena";
+                        this.dataman_slika.Name = "dataman_slika";
+                        this.dataman_slika.Size = new System.Drawing.Size(16, 17);
+                        this.dataman_slika.Text = "slika_status";
+                        //dataman_status.Text = "Greška u konekciji";
+
+                    }));
+                }
+
+        
+            }
+            catch
+            {
+                MessageBox.Show("Greška prilikom gašenja konekcije");
+
+            }
+        }
+        
         private void OnSystemConnected(object sender, EventArgs args)
         {
-                    Console.WriteLine("Connected!!!");
+            Console.WriteLine("Connected!!!");
+
+            if (_system != null)
+            {
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new EventHandler(delegate
+                    {
+                        dataman_slika.Image = global::cognex_tesanj.Properties.Resources.yast_green_dot;
+                        this.dataman_slika.Name = "dataman_slika";
+                        this.dataman_slika.Size = new System.Drawing.Size(16, 17);
+                        this.dataman_slika.Text = "slika_status";
+                        dataman_status.Text = "Upješno povezan, ready";
+                        
+                    }));
+                }
+
+                try
+                {
+                    dataman_slika.Image = global::cognex_tesanj.Properties.Resources.yast_green_dot;
+                    this.dataman_slika.Name = "dataman_slika";
+                    this.dataman_slika.Size = new System.Drawing.Size(16, 17);
+                    this.dataman_slika.Text = "slika_status";
+                    dataman_status.Text = "Upješno povezan, ready";
+                }
+                catch
+                { }
+
+            }
+
+        }
+
+
+        private void OnSystemDisconnected(object sender, EventArgs args)
+        {
+          
+                    bool reset_gui = false;
+                    Console.WriteLine("disconnected");
+            try { }
+                catch { }
+               
         }
 
         private void Results_ComplexResultCompleted(object sender, ComplexResult e)
@@ -232,12 +389,6 @@ namespace cognex_tesanj
         {
            ///AddListItem(string.Format("Partial result dropped: {0}, id={1}", result.Id.Type.ToString(), result.Id.Id));
         }
-
-        /*private void cbEnableKeepAlive_CheckedChanged(object sender, EventArgs e)
-        {
-            if (null != _system)
-                _system.SetKeepAliveOptions(cbEnableKeepAlive.Checked, 3000, 1000);
-        }*/
 
         private void OnLiveImageArrived(IAsyncResult result)
         {
@@ -359,9 +510,24 @@ namespace cognex_tesanj
 
         private void OnKeepAliveResponseMissed(object sender, EventArgs args)
         {
-                    Console.WriteLine(".....missed...");
-        }
+            //dataman_slika.Image = Properties.Resources.yast_green_dot;
+            Console.WriteLine(".....missed...");
+            _system.KeepAliveResponseMissed -= new KeepAliveResponseMissedHandler(OnKeepAliveResponseMissed);
 
+            missed_trigger.Start();
+
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new EventHandler(delegate
+                {
+                    
+
+                    dataman_status.Text = ("Greška u komunikaciji");
+                    this.dataman_slika.Image = global::cognex_tesanj.Properties.Resources.yast_red_dot;
+
+                }));
+            }
+        }
         private void cbLiveDisplay_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -371,10 +537,11 @@ namespace cognex_tesanj
             {
                 if (cbLiveDisplay.Checked)
                 {
-                    //btnTrigger.Enabled = false;
-
-                    _system.SendCommand("SET LIVEIMG.MODE 2");
-                    _system.BeginGetLiveImage(
+                        //btnTrigger.Enabled = false;
+                        testTrigger.Enabled = false;
+                        startAuto.Enabled = false;
+                        _system.SendCommand("SET LIVEIMG.MODE 2");
+                       _system.BeginGetLiveImage(
                         ImageFormat.jpeg,
                         ImageSize.Sixteenth,
                         ImageQuality.Medium,
@@ -383,9 +550,10 @@ namespace cognex_tesanj
                 }
                 else
                 {
-                   // btnTrigger.Enabled = true;
-
-                    _system.SendCommand("SET LIVEIMG.MODE 0");
+                        // btnTrigger.Enabled = true;
+                        testTrigger.Enabled = true;
+                        startAuto.Enabled = true;
+                        _system.SendCommand("SET LIVEIMG.MODE 0");
                 }
             }
             catch (Exception ex)
@@ -400,6 +568,29 @@ namespace cognex_tesanj
             }
         }
         //EthSystemConnector conn = new EthSystemConnector(168.254.179.54, 22);
+
+
+        private void CleanupConnection()
+        {
+            if (null != _system)
+            {
+                _system.SystemConnected -= OnSystemConnected;
+                _system.SystemDisconnected -= OnSystemDisconnected;
+                //_system.SystemWentOnline -= OnSystemWentOnline;
+                //_system.SystemWentOffline -= OnSystemWentOffline;
+                _system.KeepAliveResponseMissed -= OnKeepAliveResponseMissed;
+                //_system.BinaryDataTransferProgress -= OnBinaryDataTransferProgress;
+                //_system.OffProtocolByteReceived -= OffProtocolByteReceived;
+                //_system.AutomaticResponseArrived -= AutomaticResponseArrived;
+            }
+
+            _connector = null;
+            _system = null;
+        }
+
+
+
+
 
         #endregion
 
@@ -635,6 +826,72 @@ namespace cognex_tesanj
             login.StartPosition = FormStartPosition.Manual;
             login.Location = new Point(this.ClientSize.Width / 2, this.ClientSize.Height / 2);
             login.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string selected = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            string graph_loc = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            string date_time = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+            Console.WriteLine(selected + graph_loc + date_time);
+
+            string graph_name = System.IO.Path.GetFileName(graph_loc);
+
+            Program.update_globals();
+
+            string folder_name = Globals.export_folder;
+            string path_string = System.IO.Path.Combine(folder_name, selected);
+            string graph_copy = System.IO.Path.Combine(path_string, graph_name);
+
+            Console.WriteLine(path_string);
+
+            if (System.IO.Directory.Exists(path_string))
+            {
+
+                MessageBox.Show("Odabir već postoji u export mapi");
+            }
+
+            {
+                System.IO.Directory.CreateDirectory(path_string);
+
+                if (System.IO.File.Exists(graph_loc))
+                {
+                    System.IO.File.Copy(graph_loc, graph_copy, true);
+                }
+                else
+                {
+                    MessageBox.Show("Ne postoji graf za željeni odabir");
+                }         
+            } 
+        }
+
+        private void connReset_Click(object sender, EventArgs e)
+        {
+            if (_system != null )
+            { 
+                _system.SetKeepAliveOptions(false, 300 , 100);
+                disconnect();
+                testTrigger.Enabled = false;
+                startAuto.Enabled = false;
+                stopAuto.Enabled = false;
+                timer_reset.Start();
+                }
+            //System.Threading.Thread.Sleep(3000);
+            //connect();
+        }
+
+        private void timer_reset_Tick(object sender, EventArgs e)
+        {
+            timer_reset.Stop();
+            connect();
+        }
+
+        private void missed_trigger_Tick(object sender, EventArgs e)
+        {
+            _system.SetKeepAliveOptions(false, 300, 100);
+            missed_trigger.Stop();
+            disconnect();
+           
         }
     }
 }

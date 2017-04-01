@@ -46,6 +46,9 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dataman_status = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dataman_slika = new System.Windows.Forms.ToolStripStatusLabel();
             this.TriggerTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,6 +61,9 @@
             this.logo_pic = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.testTrigger = new System.Windows.Forms.Button();
+            this.connReset = new System.Windows.Forms.Button();
+            this.timer_reset = new System.Windows.Forms.Timer(this.components);
+            this.missed_trigger = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -76,7 +82,7 @@
             this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1134, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1234, 25);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -109,6 +115,7 @@
             // 
             // postavkeAplikacijeToolStripMenuItem
             // 
+            this.postavkeAplikacijeToolStripMenuItem.Enabled = false;
             this.postavkeAplikacijeToolStripMenuItem.Image = global::cognex_tesanj.Properties.Resources.adjustlevels_svg;
             this.postavkeAplikacijeToolStripMenuItem.Name = "postavkeAplikacijeToolStripMenuItem";
             this.postavkeAplikacijeToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
@@ -123,7 +130,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(6, 50);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(718, 441);
+            this.dataGridView1.Size = new System.Drawing.Size(839, 441);
             this.dataGridView1.TabIndex = 7;
             // 
             // lblRes
@@ -131,7 +138,7 @@
             this.lblRes.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.lblRes.AutoSize = true;
             this.lblRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblRes.Location = new System.Drawing.Point(20, 139);
+            this.lblRes.Location = new System.Drawing.Point(20, 136);
             this.lblRes.Name = "lblRes";
             this.lblRes.Size = new System.Drawing.Size(126, 25);
             this.lblRes.TabIndex = 8;
@@ -140,7 +147,7 @@
             // DMcode
             // 
             this.DMcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.DMcode.Location = new System.Drawing.Point(147, 136);
+            this.DMcode.Location = new System.Drawing.Point(147, 133);
             this.DMcode.Name = "DMcode";
             this.DMcode.Size = new System.Drawing.Size(218, 31);
             this.DMcode.TabIndex = 9;
@@ -188,7 +195,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox1.Location = new System.Drawing.Point(389, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(730, 558);
+            this.groupBox1.Size = new System.Drawing.Size(880, 558);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Prikaz arhive";
@@ -207,6 +214,7 @@
             this.button4.Text = "Export odabira";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -232,19 +240,45 @@
             // 
             this.statusStrip1.BackColor = System.Drawing.Color.Khaki;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 720);
+            this.toolStripStatusLabel1,
+            this.dataman_status,
+            this.toolStripStatusLabel2,
+            this.dataman_slika});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 680);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.Size = new System.Drawing.Size(1134, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1234, 22);
             this.statusStrip1.TabIndex = 19;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
+            this.toolStripStatusLabel1.Image = global::cognex_tesanj.Properties.Resources.clock;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(134, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
+            // dataman_status
+            // 
+            this.dataman_status.Image = global::cognex_tesanj.Properties.Resources.camera_photo_svg;
+            this.dataman_status.Name = "dataman_status";
+            this.dataman_status.Size = new System.Drawing.Size(89, 17);
+            this.dataman_status.Text = "Stanje čitača";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 17);
+            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            // 
+            // dataman_slika
+            // 
+            this.dataman_slika.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.dataman_slika.Image = global::cognex_tesanj.Properties.Resources.yast_red_dot;
+            this.dataman_slika.Name = "dataman_slika";
+            this.dataman_slika.Size = new System.Drawing.Size(16, 17);
+            this.dataman_slika.Text = "slika_status";
             // 
             // TriggerTimer
             // 
@@ -266,7 +300,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox2.Location = new System.Drawing.Point(0, 27);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(389, 690);
+            this.groupBox2.Size = new System.Drawing.Size(389, 649);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dataman";
@@ -275,7 +309,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(21, 172);
+            this.label3.Location = new System.Drawing.Point(21, 161);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 20);
             this.label3.TabIndex = 23;
@@ -285,7 +319,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(21, 420);
+            this.label2.Location = new System.Drawing.Point(21, 404);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 20);
             this.label2.TabIndex = 22;
@@ -325,7 +359,7 @@
             // 
             this.LivePic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.LivePic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LivePic.Location = new System.Drawing.Point(25, 443);
+            this.LivePic.Location = new System.Drawing.Point(25, 426);
             this.LivePic.Name = "LivePic";
             this.LivePic.Size = new System.Drawing.Size(340, 217);
             this.LivePic.TabIndex = 13;
@@ -335,7 +369,7 @@
             // 
             this.resPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.resPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.resPic.Location = new System.Drawing.Point(25, 195);
+            this.resPic.Location = new System.Drawing.Point(25, 184);
             this.resPic.Name = "resPic";
             this.resPic.Size = new System.Drawing.Size(340, 217);
             this.resPic.TabIndex = 12;
@@ -352,7 +386,7 @@
             this.logo_pic.BackColor = System.Drawing.Color.Transparent;
             this.logo_pic.BackgroundImage = global::cognex_tesanj.Properties.Resources.sinel_logo;
             this.logo_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.logo_pic.Location = new System.Drawing.Point(783, 659);
+            this.logo_pic.Location = new System.Drawing.Point(883, 619);
             this.logo_pic.Name = "logo_pic";
             this.logo_pic.Size = new System.Drawing.Size(351, 58);
             this.logo_pic.TabIndex = 23;
@@ -391,13 +425,35 @@
             this.testTrigger.MouseDown += new System.Windows.Forms.MouseEventHandler(this.testTrigger_MouseDown);
             this.testTrigger.MouseUp += new System.Windows.Forms.MouseEventHandler(this.testTrigger_MouseUp);
             // 
+            // connReset
+            // 
+            this.connReset.BackColor = System.Drawing.Color.Khaki;
+            this.connReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.connReset.Location = new System.Drawing.Point(585, 644);
+            this.connReset.Name = "connReset";
+            this.connReset.Size = new System.Drawing.Size(192, 33);
+            this.connReset.TabIndex = 20;
+            this.connReset.Text = "Resetiranje konekcije";
+            this.connReset.UseVisualStyleBackColor = false;
+            this.connReset.Click += new System.EventHandler(this.connReset_Click);
+            // 
+            // timer_reset
+            // 
+            this.timer_reset.Interval = 3000;
+            this.timer_reset.Tick += new System.EventHandler(this.timer_reset_Tick);
+            // 
+            // missed_trigger
+            // 
+            this.missed_trigger.Tick += new System.EventHandler(this.missed_trigger_Tick);
+            // 
             // Main_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.MintCream;
-            this.ClientSize = new System.Drawing.Size(1134, 742);
+            this.ClientSize = new System.Drawing.Size(1234, 702);
+            this.Controls.Add(this.connReset);
             this.Controls.Add(this.logo_pic);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.statusStrip1);
@@ -408,7 +464,8 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1200, 780);
+            this.MaximumSize = new System.Drawing.Size(1250, 740);
+            this.MinimumSize = new System.Drawing.Size(1250, 740);
             this.Name = "Main_form";
             this.Text = "Datamatrix arhiviranje";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_form_FormClosing);
@@ -460,6 +517,12 @@
         private System.Windows.Forms.PictureBox logo_pic;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripStatusLabel dataman_status;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel dataman_slika;
+        private System.Windows.Forms.Button connReset;
+        private System.Windows.Forms.Timer timer_reset;
+        private System.Windows.Forms.Timer missed_trigger;
     }
 }
 

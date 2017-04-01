@@ -21,11 +21,22 @@ namespace cognex_tesanj
         public static string timeout_counter = ConfigurationManager.AppSettings["timeout_counter"];
         public static string trigger_timer = ConfigurationManager.AppSettings["trigger"];
     }
+  
 
 
     static class Program
     {
-        
+        public static void update_globals()
+        {
+            Globals.database_loc = ConfigurationManager.AppSettings["db_loc"];
+            Globals.archive_loc = ConfigurationManager.AppSettings["archive_loc"];
+            Globals.external_archive_loc = ConfigurationManager.AppSettings["external_archive_loc"];
+            Globals.export_folder = ConfigurationManager.AppSettings["Export_folder"];
+            Globals.db_passwd = ConfigurationManager.AppSettings["db_passwd"];
+            Globals.timeout_counter = ConfigurationManager.AppSettings["timeout_counter"];
+            Globals.trigger_timer = ConfigurationManager.AppSettings["trigger"];
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

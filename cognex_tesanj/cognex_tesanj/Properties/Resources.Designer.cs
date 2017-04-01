@@ -103,6 +103,16 @@ namespace cognex_tesanj.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clock {
+            get {
+                object obj = ResourceManager.GetObject("clock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dialog_ok {
             get {
                 object obj = ResourceManager.GetObject("dialog_ok", resourceCulture);
@@ -236,6 +246,26 @@ namespace cognex_tesanj.Properties {
         internal static System.Drawing.Bitmap window_close_svg {
             get {
                 object obj = ResourceManager.GetObject("window_close_svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap yast_green_dot {
+            get {
+                object obj = ResourceManager.GetObject("yast_green_dot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap yast_red_dot {
+            get {
+                object obj = ResourceManager.GetObject("yast_red_dot", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

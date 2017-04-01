@@ -76,6 +76,8 @@ namespace cognex_tesanj
 
         private void button1_Click(object sender, EventArgs e)
         {
+            mainForm.waitForLog = true;
+            timer2.Stop();
             this.Close();
         }
 
@@ -140,7 +142,7 @@ namespace cognex_tesanj
         private void timer2_Tick(object sender, EventArgs e)
         {
             counter--;
-            count.Text = "Timeout: " +  counter.ToString() + " s";
+            count.Text = "ČEKANJE GRAFA: " +  counter.ToString() + " s";
             if (counter == 0)
             {
                 timer2.Stop();

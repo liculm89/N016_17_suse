@@ -25,7 +25,7 @@ namespace cognex_tesanj
         private void LoginBtn_Click(object sender, EventArgs e)
         {
 
-            string database_loc = "'H:\\database_access.accdb'";
+            string database_loc = Globals.database_loc;
             string Db_Password = "0000";
             string conString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password=" + Db_Password + "; Persist Security Info = False; Data Source=" + database_loc + ";";
 

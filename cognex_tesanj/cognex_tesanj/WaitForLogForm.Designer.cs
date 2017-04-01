@@ -47,18 +47,19 @@
             // 
             this.lblDMcode.AutoSize = true;
             this.lblDMcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblDMcode.Location = new System.Drawing.Point(275, 112);
+            this.lblDMcode.Location = new System.Drawing.Point(383, 112);
             this.lblDMcode.Name = "lblDMcode";
             this.lblDMcode.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblDMcode.Size = new System.Drawing.Size(114, 25);
             this.lblDMcode.TabIndex = 0;
             this.lblDMcode.Text = "lblDMcode";
+            this.lblDMcode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.OrangeRed;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(82, 327);
+            this.button1.Location = new System.Drawing.Point(190, 327);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(368, 105);
             this.button1.TabIndex = 1;
@@ -70,21 +71,23 @@
             // 
             this.lblTime.AutoSize = true;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblTime.Location = new System.Drawing.Point(275, 237);
+            this.lblTime.Location = new System.Drawing.Point(383, 237);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(70, 25);
             this.lblTime.TabIndex = 2;
             this.lblTime.Text = "label1";
+            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblGraph
             // 
             this.lblGraph.AutoSize = true;
             this.lblGraph.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblGraph.Location = new System.Drawing.Point(275, 174);
+            this.lblGraph.Location = new System.Drawing.Point(383, 174);
             this.lblGraph.Name = "lblGraph";
             this.lblGraph.Size = new System.Drawing.Size(164, 25);
             this.lblGraph.TabIndex = 3;
             this.lblGraph.Text = "Čekanje grafa...";
+            this.lblGraph.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // timer1
             // 
@@ -96,33 +99,36 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Khaki;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(143, 112);
+            this.label1.Location = new System.Drawing.Point(251, 112);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 25);
             this.label1.TabIndex = 4;
             this.label1.Text = "Očitani kod:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Khaki;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(210, 174);
+            this.label2.Location = new System.Drawing.Point(318, 174);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 25);
             this.label2.TabIndex = 5;
             this.label2.Text = "Graf:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Khaki;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(30, 237);
+            this.label3.Location = new System.Drawing.Point(138, 237);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(239, 25);
             this.label3.TabIndex = 6;
             this.label3.Text = "Datum/Vrijeme očitanja:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // timer2
             // 
@@ -134,13 +140,14 @@
             // 
             this.count.AutoSize = true;
             this.count.BackColor = System.Drawing.Color.Aquamarine;
-            this.count.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.count.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.count.ForeColor = System.Drawing.Color.Red;
-            this.count.Location = new System.Drawing.Point(101, 16);
+            this.count.Location = new System.Drawing.Point(108, 16);
             this.count.Name = "count";
-            this.count.Size = new System.Drawing.Size(358, 73);
+            this.count.Size = new System.Drawing.Size(450, 55);
             this.count.TabIndex = 7;
-            this.count.Text = "Countdown";
+            this.count.Text = "ČEKANJE GRAFA :";
+            this.count.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox1
             // 
@@ -157,7 +164,7 @@
             this.groupBox1.Controls.Add(this.lblGraph);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(560, 438);
+            this.groupBox1.Size = new System.Drawing.Size(760, 438);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
@@ -166,11 +173,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
-            this.ClientSize = new System.Drawing.Size(584, 462);
+            this.ClientSize = new System.Drawing.Size(784, 462);
             this.Controls.Add(this.groupBox1);
             this.Location = new System.Drawing.Point(100, 100);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(600, 500);
+            this.MaximumSize = new System.Drawing.Size(800, 500);
             this.Name = "WaitForLogForm";
             this.Text = "Čekanje Grafa";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WaitForLogForm_FormClosing);

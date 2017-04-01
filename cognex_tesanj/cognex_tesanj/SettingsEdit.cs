@@ -15,7 +15,7 @@ namespace cognex_tesanj
 {
     public partial class SettingsEdit : Form
     {
-
+        /*
         private void AddOrUpdateAppSettings(string key, string value)
         {
             try
@@ -38,10 +38,20 @@ namespace cognex_tesanj
                 Console.WriteLine("Error writing app settings");
             }
         }
+        */
+        public string[] keys = new string[6];
+
 
         public SettingsEdit()
         {
             InitializeComponent();
+            keys[0] = "db_loc";
+            keys[1] = "archive_loc";
+            keys[2] = "external_archive_loc";
+            keys[3] = "Export_loc";
+            keys[4] = "timeout_counter";
+            keys[5] = "trigger";
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -85,8 +95,73 @@ namespace cognex_tesanj
 
         private void button3_Click(object sender, EventArgs e)
         {
+            var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var settings = configFile.AppSettings.Settings;
+
+            try
+            {
+
+                configFile.AppSettings.Settings.Remove("Export_folder");
+                configFile.AppSettings.Settings.Add("Export_folder", @"c:\export123");
+                Console.WriteLine("exported");
+               configFile.Save(ConfigurationSaveMode.Full);
+                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+
+                /* if (settings[keys[3]] == null)
+                 {
+                     settings.Add(keys[3], @"C:\EXPORT");
+                     Console.WriteLine("created!!!!!");
+                 }
+                 else
+                 {
+                     settings[keys[3]].Value = @"c:\EXPORT";
+                     Console.WriteLine("modified");
+                 }*/
+            }
+            catch (ConfigurationErrorsException ex)
+            {
+                MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
+
+            }
+
+            //confi
+            //configFile.Save(ConfigurationSaveMode.Modified);
+            /*try
+            {
+                configFile.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+                }
+                  catch (ConfigurationErrorsException ex)
+            {
+                MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
+
+            }*/
+            /*
+
+            try
+            {
+                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                var settings = configFile.AppSettings.Settings;
+                
+
+
+                if (settings[key] == null)
+                {
+                    settings.Add(key, value);
+                }
+                else
+                {
+                    settings[key].Value = value;
+                }
+                configFile.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+            }
+            catch (ConfigurationErrorsException)
+            {
+                Console.WriteLine("Error writing app settings");
+            }
             //AddOrUpdateAppSettings("db_loc", TBdb_loc.Text);
-           // AddOrUpdateAppSettings("external_archive_loc", TBdigiforce.Text);
+            // AddOrUpdateAppSettings("external_archive_loc", TBdigiforce.Text);*/
             this.Close();
         }
     }
