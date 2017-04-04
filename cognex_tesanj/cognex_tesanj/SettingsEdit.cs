@@ -95,34 +95,86 @@ namespace cognex_tesanj
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            var settings = configFile.AppSettings.Settings;
+           
+            try {
 
-            try
+                ExeConfigurationFileMap map = new ExeConfigurationFileMap { ExeConfigFilename = @"H:\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.exe.config" };
+
+                var configFile = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
+                var settings = configFile.AppSettings.Settings;
+
+
+
+
+                try
+                {
+                    try
+                    {
+                        configFile.AppSettings.Settings.Remove("Export_folder");
+                        configFile.AppSettings.Settings.Add("Export_folder", @"c:\export123");
+                    }
+                    catch (ConfigurationErrorsException ex)
+
+                    {
+                        MessageBox.Show("Cant add: " + ex.ToString());
+                    }
+
+
+
+                    Console.WriteLine("exported");
+                    try
+                    {
+                        configFile.Save(ConfigurationSaveMode.Full);
+                        ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+                    }
+
+                    catch (ConfigurationErrorsException ex)
+
+                    {
+                        MessageBox.Show("Cant save config: " + ex.ToString());
+                    }
+
+
+                    /* if (settings[keys[3]] == null)
+                     {
+                         settings.Add(keys[3], @"C:\EXPORT");
+                         Console.WriteLine("created!!!!!");
+                     }
+                     else
+                     {
+                         settings[keys[3]].Value = @"c:\EXPORT";
+                         Console.WriteLine("modified");
+                     }*/
+                }
+                catch (ConfigurationErrorsException ex)
+                {
+                    MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
+
+                }nAME
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+            catch(ConfigurationErrorsException ex)
             {
 
-                configFile.AppSettings.Settings.Remove("Export_folder");
-                configFile.AppSettings.Settings.Add("Export_folder", @"c:\export123");
-                Console.WriteLine("exported");
-               configFile.Save(ConfigurationSaveMode.Full);
-                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
-
-                /* if (settings[keys[3]] == null)
-                 {
-                     settings.Add(keys[3], @"C:\EXPORT");
-                     Console.WriteLine("created!!!!!");
-                 }
-                 else
-                 {
-                     settings[keys[3]].Value = @"c:\EXPORT";
-                     Console.WriteLine("modified");
-                 }*/
-            }
-            catch (ConfigurationErrorsException ex)
-            {
-                MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
+                MessageBox.Show("Cant load: " + ex.ToString());
 
             }
+
+
+            
 
             //confi
             //configFile.Save(ConfigurationSaveMode.Modified);

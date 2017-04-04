@@ -115,7 +115,6 @@
             // 
             // postavkeAplikacijeToolStripMenuItem
             // 
-            this.postavkeAplikacijeToolStripMenuItem.Enabled = false;
             this.postavkeAplikacijeToolStripMenuItem.Image = global::cognex_tesanj.Properties.Resources.adjustlevels_svg;
             this.postavkeAplikacijeToolStripMenuItem.Name = "postavkeAplikacijeToolStripMenuItem";
             this.postavkeAplikacijeToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
