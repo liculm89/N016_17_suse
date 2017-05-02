@@ -15,31 +15,8 @@ namespace cognex_tesanj
 {
     public partial class SettingsEdit : Form
     {
-        /*
-        private void AddOrUpdateAppSettings(string key, string value)
-        {
-            try
-            {
-                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                var settings = configFile.AppSettings.Settings;
-                if (settings[key] == null)
-                {
-                    settings.Add(key, value);
-                }
-                else
-                {
-                    settings[key].Value = value;
-                }
-                configFile.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
-            }
-            catch (ConfigurationErrorsException)
-            {
-                Console.WriteLine("Error writing app settings");
-            }
-        }
-        */
-        public string[] keys = new string[6];
+      
+        public string[] keys = new string[7];
 
 
         public SettingsEdit()
@@ -48,23 +25,22 @@ namespace cognex_tesanj
             keys[0] = "db_loc";
             keys[1] = "archive_loc";
             keys[2] = "external_archive_loc";
-            keys[3] = "Export_loc";
+            keys[3] = "Export_folder";
             keys[4] = "timeout_counter";
             keys[5] = "trigger";
+            keys[6] = "db_passwd";
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                //System.IO.StreamReader sr = new System.IO.StreamReader(openFileDialog1.FileName);
-                
+            {      
                 string directoryPath = Path.GetDirectoryName(openFileDialog1.FileName);
                 string filename = System.IO.Path.GetFileName(openFileDialog1.FileName);
-                Console.WriteLine(directoryPath +"\\" + filename);
-                //MessageBox.Show(sr.ReadToEnd().ToString());
-                //sr.Close();
+                //Console.WriteLine(directoryPath +"\\" + filename);
+                TBdb_loc.Text = "'" + directoryPath + "\\" + filename + "'";
+
             }
         }
 
@@ -74,147 +50,84 @@ namespace cognex_tesanj
             {
                 string drp = Path.GetDirectoryName(folderBrowserDialog1.SelectedPath);
                 string full_path = Path.GetFullPath(folderBrowserDialog1.SelectedPath);
-
-                Console.WriteLine(full_path);
+                //Console.WriteLine(full_path);
+                TBdigiforce.Text = full_path; 
             }
         }
 
         private void SettingsEdit_Load(object sender, EventArgs e)
         {
-            TBdb_loc.Text = Globals.database_loc;
-            TBdigiforce.Text = Globals.external_archive_loc;
-            TBexport.Text = Globals.export_folder;
-            TBtimeout.Text = Globals.timeout_counter;
-            TB_trigger.Text = Globals.trigger_timer;
+            TBdb_loc.Text = Properties.Settings.Default[keys[0]].ToString();
+            TBdigiforce.Text = Properties.Settings.Default[keys[2]].ToString();
+            TBexport.Text = Properties.Settings.Default[keys[3]].ToString();
+            TBtimeout.Text = Properties.Settings.Default[keys[4]].ToString();
+            TB_trigger.Text = Properties.Settings.Default[keys[5]].ToString();
+
+            TB_passwd.PasswordChar = '*';
+            TB_passwd.Text = Properties.Settings.Default[keys[6]].ToString();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
+            //Properties.Settings.Default[]
+        }
+
+
+        static void AddUpdateAppSettings(string key, string value)
+        {
+               
+                try
+                {
+                    Properties.Settings.Default[key] = value;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Could not write configuration key: " + key);
+                }
+
+                Properties.Settings.Default.Save();
+                Console.WriteLine("location : " + AppDomain.CurrentDomain.SetupInformation.ConfigurationFile.ToString());
+             
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
-            try {
+            Console.WriteLine("button3 click");
+            try
+            {     
+                Console.WriteLine("update");
+                AddUpdateAppSettings(keys[0], TBdb_loc.Text);
+                AddUpdateAppSettings(keys[2], TBdigiforce.Text);
+                AddUpdateAppSettings(keys[3], TBexport.Text);
+                AddUpdateAppSettings(keys[4], TBtimeout.Text);
+                AddUpdateAppSettings(keys[5], TB_trigger.Text);
+                AddUpdateAppSettings(keys[6], TB_passwd.Text);
 
-                ExeConfigurationFileMap map = new ExeConfigurationFileMap { ExeConfigFilename = @"H:\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.exe.config" };
-
-                var configFile = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
-                var settings = configFile.AppSettings.Settings;
-
-
-
-
-                try
-                {
-                    try
-                    {
-                        configFile.AppSettings.Settings.Remove("Export_folder");
-                        configFile.AppSettings.Settings.Add("Export_folder", @"c:\export123");
-                    }
-                    catch (ConfigurationErrorsException ex)
-
-                    {
-                        MessageBox.Show("Cant add: " + ex.ToString());
-                    }
-
-
-
-                    Console.WriteLine("exported");
-                    try
-                    {
-                        configFile.Save(ConfigurationSaveMode.Full);
-                        ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
-                    }
-
-                    catch (ConfigurationErrorsException ex)
-
-                    {
-                        MessageBox.Show("Cant save config: " + ex.ToString());
-                    }
-
-
-                    /* if (settings[keys[3]] == null)
-                     {
-                         settings.Add(keys[3], @"C:\EXPORT");
-                         Console.WriteLine("created!!!!!");
-                     }
-                     else
-                     {
-                         settings[keys[3]].Value = @"c:\EXPORT";
-                         Console.WriteLine("modified");
-                     }*/
-                }
-                catch (ConfigurationErrorsException ex)
-                {
-                    MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
-
-                }nAME
-
-
-
-
-
-
-
-
-
-
-
-
-
+                Program.update_globals();
+              
             }
-
-            catch(ConfigurationErrorsException ex)
-            {
-
-                MessageBox.Show("Cant load: " + ex.ToString());
-
-            }
-
-
-            
-
-            //confi
-            //configFile.Save(ConfigurationSaveMode.Modified);
-            /*try
-            {
-                configFile.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
-                }
-                  catch (ConfigurationErrorsException ex)
+            catch (ConfigurationErrorsException ex)
             {
                 MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
 
-            }*/
-            /*
-
-            try
-            {
-                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                var settings = configFile.AppSettings.Settings;
-                
-
-
-                if (settings[key] == null)
-                {
-                    settings.Add(key, value);
-                }
-                else
-                {
-                    settings[key].Value = value;
-                }
-                configFile.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
             }
-            catch (ConfigurationErrorsException)
-            {
-                Console.WriteLine("Error writing app settings");
-            }
-            //AddOrUpdateAppSettings("db_loc", TBdb_loc.Text);
-            // AddOrUpdateAppSettings("external_archive_loc", TBdigiforce.Text);*/
+
+          
             this.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string drp = Path.GetDirectoryName(folderBrowserDialog1.SelectedPath);
+                string full_path = Path.GetFullPath(folderBrowserDialog1.SelectedPath);
+
+                Console.WriteLine(full_path);
+                TBexport.Text = full_path.ToString();
+
+            }
         }
     }
 }

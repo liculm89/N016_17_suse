@@ -1,7 +1,27 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="cognex_tesanj.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="db_loc" Type="System.String" Scope="User">
+      <Value Profile="(Default)">'I:\\database_access.accdb'</Value>
+    </Setting>
+    <Setting Name="archive_loc" Type="System.String" Scope="User">
+      <Value Profile="(Default)">I:\\Archive</Value>
+    </Setting>
+    <Setting Name="external_archive_loc" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Digiforce_arhiva</Value>
+    </Setting>
+    <Setting Name="Export_folder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Export</Value>
+    </Setting>
+    <Setting Name="db_passwd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0000</Value>
+    </Setting>
+    <Setting Name="timeout_counter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="trigger" Type="System.String" Scope="User">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

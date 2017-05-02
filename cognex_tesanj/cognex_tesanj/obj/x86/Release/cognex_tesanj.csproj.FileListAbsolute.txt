@@ -59,7 +59,6 @@ I:\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.pdb
 I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.Main_form.resources
 I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.Database_form.resources
 I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.frmReconnecting.resources
-I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.Cognex_form.resources
 I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.Properties.Resources.resources
 I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.csproj.GenerateResource.Cache
 I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.exe.manifest
@@ -89,3 +88,7 @@ H:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.exe
 H:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.pdb
 H:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.WaitForLogForm.resources
 H:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.SettingsEdit.resources
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\Cognex.DataMan.SDK.cognex_sample.resources
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.frRecon.resources
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.SettingsEdit.resources
+I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.WaitForLogForm.resources

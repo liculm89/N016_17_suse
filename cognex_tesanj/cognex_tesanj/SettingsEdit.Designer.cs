@@ -48,15 +48,17 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.TB_passwd = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(12, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 24);
+            this.label1.Size = new System.Drawing.Size(117, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Baza podataka";
             // 
@@ -67,7 +69,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Khaki;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button1.Location = new System.Drawing.Point(467, 36);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(105, 30);
@@ -79,7 +81,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Khaki;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button2.Location = new System.Drawing.Point(467, 79);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(105, 30);
@@ -91,104 +93,105 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(12, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(139, 24);
+            this.label2.Size = new System.Drawing.Size(118, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Digiforce arhiva";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.Location = new System.Drawing.Point(12, 118);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 24);
+            this.label3.Size = new System.Drawing.Size(99, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Export mapa";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(39, 177);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(12, 164);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 24);
+            this.label4.Size = new System.Drawing.Size(108, 20);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Timeout timer";
+            this.label4.Text = "Čekanje grafa";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(39, 217);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(14, 204);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(117, 24);
+            this.label5.Size = new System.Drawing.Size(97, 20);
             this.label5.TabIndex = 6;
             this.label5.Text = "Trigger timer";
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBox1.Location = new System.Drawing.Point(53, 258);
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBox1.Location = new System.Drawing.Point(18, 300);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(472, 28);
+            this.checkBox1.Size = new System.Drawing.Size(407, 24);
             this.checkBox1.TabIndex = 7;
             this.checkBox1.Text = "Start automatskog čitanja prilikom podizanja aplikacije";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // TBdb_loc
             // 
-            this.TBdb_loc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TBdb_loc.Location = new System.Drawing.Point(150, 39);
+            this.TBdb_loc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TBdb_loc.Location = new System.Drawing.Point(126, 39);
             this.TBdb_loc.Name = "TBdb_loc";
-            this.TBdb_loc.Size = new System.Drawing.Size(311, 29);
+            this.TBdb_loc.Size = new System.Drawing.Size(335, 26);
             this.TBdb_loc.TabIndex = 8;
             // 
             // TBdigiforce
             // 
-            this.TBdigiforce.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TBdigiforce.Location = new System.Drawing.Point(150, 77);
+            this.TBdigiforce.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TBdigiforce.Location = new System.Drawing.Point(126, 77);
             this.TBdigiforce.Name = "TBdigiforce";
-            this.TBdigiforce.Size = new System.Drawing.Size(311, 29);
+            this.TBdigiforce.Size = new System.Drawing.Size(335, 26);
             this.TBdigiforce.TabIndex = 9;
             // 
             // TBexport
             // 
-            this.TBexport.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TBexport.Location = new System.Drawing.Point(150, 116);
+            this.TBexport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TBexport.Location = new System.Drawing.Point(126, 116);
             this.TBexport.Name = "TBexport";
-            this.TBexport.Size = new System.Drawing.Size(311, 29);
+            this.TBexport.Size = new System.Drawing.Size(335, 26);
             this.TBexport.TabIndex = 10;
             // 
             // TBtimeout
             // 
-            this.TBtimeout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TBtimeout.Location = new System.Drawing.Point(193, 174);
+            this.TBtimeout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TBtimeout.Location = new System.Drawing.Point(126, 161);
             this.TBtimeout.Name = "TBtimeout";
-            this.TBtimeout.Size = new System.Drawing.Size(81, 29);
+            this.TBtimeout.Size = new System.Drawing.Size(81, 26);
             this.TBtimeout.TabIndex = 11;
             // 
             // TB_trigger
             // 
-            this.TB_trigger.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TB_trigger.Location = new System.Drawing.Point(193, 214);
+            this.TB_trigger.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TB_trigger.Location = new System.Drawing.Point(126, 201);
             this.TB_trigger.Name = "TB_trigger";
-            this.TB_trigger.Size = new System.Drawing.Size(81, 29);
+            this.TB_trigger.Size = new System.Drawing.Size(81, 26);
             this.TB_trigger.TabIndex = 12;
             // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Khaki;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button5.Location = new System.Drawing.Point(467, 115);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(105, 30);
             this.button5.TabIndex = 15;
             this.button5.Text = "Odaberi...";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -196,7 +199,7 @@
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button4.Image = global::cognex_tesanj.Properties.Resources.cancel;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(285, 312);
+            this.button4.Location = new System.Drawing.Point(285, 330);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(180, 45);
             this.button4.TabIndex = 14;
@@ -210,7 +213,7 @@
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button3.Image = global::cognex_tesanj.Properties.Resources.dialog_ok;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(64, 312);
+            this.button3.Location = new System.Drawing.Point(69, 330);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(210, 45);
             this.button3.TabIndex = 13;
@@ -222,22 +225,40 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(281, 177);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.Location = new System.Drawing.Point(213, 167);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(19, 24);
+            this.label6.Size = new System.Drawing.Size(17, 20);
             this.label6.TabIndex = 16;
             this.label6.Text = "s";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(281, 217);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label7.Location = new System.Drawing.Point(213, 207);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 24);
+            this.label7.Size = new System.Drawing.Size(30, 20);
             this.label7.TabIndex = 17;
             this.label7.Text = "ms";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label8.Location = new System.Drawing.Point(15, 248);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(174, 20);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Lozinka baze podataka";
+            // 
+            // TB_passwd
+            // 
+            this.TB_passwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TB_passwd.Location = new System.Drawing.Point(196, 247);
+            this.TB_passwd.Name = "TB_passwd";
+            this.TB_passwd.Size = new System.Drawing.Size(100, 26);
+            this.TB_passwd.TabIndex = 19;
             // 
             // SettingsEdit
             // 
@@ -245,6 +266,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(584, 387);
+            this.Controls.Add(this.TB_passwd);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button5);
@@ -296,5 +319,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox TB_passwd;
     }
 }

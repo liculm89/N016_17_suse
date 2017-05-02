@@ -28,7 +28,6 @@ namespace cognex_tesanj
         private bool _closing = false;
         private bool _autoconnect = false;
         private object _listAddItemLock = new object();
-        //public static TextBox DMcode = new TextBox();
         public bool waitForLog = true;
 
         public Image red_dot = Properties.Resources.yast_red_dot;
@@ -596,8 +595,9 @@ namespace cognex_tesanj
 
         DataSet myset = new DataSet("Excel import");
         DataTable dataTable = new DataTable("excelImport");
-       // OleDbDataAdapter dataAdapter;
+        // OleDbDataAdapter dataAdapter;
        
+         
         static string Db_Password = "0000";
         static string database_loc = Globals.database_loc;
         static string conString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password=" + Db_Password + "; Persist Security Info = False; Data Source=" + database_loc + ";";
@@ -691,14 +691,14 @@ namespace cognex_tesanj
 
         private void testTrigger_MouseUp(object sender, MouseEventArgs e)
         {
-            /*try
+            try
             {
                 _system.SendCommand("TRIGGER OFF");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to send TRIGGER OFF command: " + ex.ToString());
-            }*/
+            }
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -762,6 +762,7 @@ namespace cognex_tesanj
                 }
                 catch (Exception ex)
                 {
+                    TriggerTimer.Stop();
                     MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
                 }
             }
@@ -774,9 +775,22 @@ namespace cognex_tesanj
 
         private void startAuto_Click(object sender, EventArgs e)
         {
+            if (_system != null)
+            {
 
-                TriggerTimer.Start();
-
+                try
+                {
+                    TriggerTimer.Start();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nije moguće pokrenuti automatsko očitavanje\n jer nije ostvarena komunikacija sa čitačem!", "Greška komunikacije");
+            }
         }
 
         private void stopAuto_Click(object sender, EventArgs e)
@@ -848,7 +862,7 @@ namespace cognex_tesanj
             if (System.IO.Directory.Exists(path_string))
             {
 
-                MessageBox.Show("Odabir već postoji u export mapi");
+                MessageBox.Show("Odabirani graf već postoji u export mapi");
             }
 
             {
