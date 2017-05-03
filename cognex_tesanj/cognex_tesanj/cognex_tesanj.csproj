@@ -68,6 +68,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>bin\x86\Release\cognex_tesanj.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>C15596F4C3D0670A20AE1F5A4FB149863AC14ABF</ManifestCertificateThumbprint>
@@ -157,6 +158,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Program_sample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="select_db.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="select_db.Designer.cs">
+      <DependentUpon>select_db.cs</DependentUpon>
+    </Compile>
     <Compile Include="SettingsEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +206,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="select_db.resx">
+      <DependentUpon>select_db.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettingsEdit.resx">
       <DependentUpon>SettingsEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,7 +228,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="ADODB">

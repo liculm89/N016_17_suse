@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 using System.Configuration;
 using System.IO;
@@ -18,7 +12,9 @@ namespace cognex_tesanj
       
         public string[] keys = new string[7];
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public SettingsEdit()
         {
             InitializeComponent();
@@ -29,7 +25,6 @@ namespace cognex_tesanj
             keys[4] = "timeout_counter";
             keys[5] = "trigger";
             keys[6] = "db_passwd";
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -87,7 +82,7 @@ namespace cognex_tesanj
                 }
 
                 Properties.Settings.Default.Save();
-                Console.WriteLine("location : " + AppDomain.CurrentDomain.SetupInformation.ConfigurationFile.ToString());
+                //Console.WriteLine("location : " + AppDomain.CurrentDomain.SetupInformation.ConfigurationFile.ToString());
              
         }
 
@@ -128,6 +123,11 @@ namespace cognex_tesanj
                 TBexport.Text = full_path.ToString();
 
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -8,13 +8,14 @@ using Cognex.DataMan.SDK.Utils;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Diagnostics;
-using System.Data;
-using System.Collections.Generic;
 using System.Xml;
 using System.Configuration;
 
 namespace cognex_tesanj
-{
+{   
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class Main_form : Form
     {
 
@@ -25,13 +26,46 @@ namespace cognex_tesanj
         private ISystemConnector _connector = null;
         private DataManSystem _system = null;
         private object _currentResultInfoSyncLock = new object();
+        /// <summary>
+        /// 
+        /// </summary>
         private bool _closing = false;
+        /// <summary>
+        /// 
+        /// </summary>
         private bool _autoconnect = false;
         private object _listAddItemLock = new object();
+        /// <summary>
+        /// 
+        /// </summary>
         public bool waitForLog = true;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Image red_dot = Properties.Resources.yast_red_dot;
 
+        static string Db_Password = Globals.db_passwd;
+        static string database_loc = Globals.database_loc;
+        static string conString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password=" + Db_Password + "; Persist Security Info = False; Data Source=" + database_loc + ";";
+
+        DataSet ds = new DataSet();
+        OleDbConnection con = new OleDbConnection(conString);
+        OleDbCommand cmd;
+        OleDbDataAdapter adapter;
+        DataTable dt = new DataTable();
+        /// <summary>
+        /// 
+        /// </summary>
+        public void update_connection()
+        {   
+            Db_Password = Globals.db_passwd;
+            database_loc = Globals.database_loc;
+            conString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password=" + Db_Password + "; Persist Security Info = False; Data Source=" + database_loc + ";";
+            con = new OleDbConnection(conString);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         public Main_form()
         {
             InitializeComponent();
@@ -59,7 +93,7 @@ namespace cognex_tesanj
             
             try
             {
-                System.Data.OleDb.OleDbConnection MyConnection = CreateConnection();
+                OleDbConnection MyConnection = CreateConnection();
                 MyConnection.Close();
             }
             catch (Exception ex)
@@ -93,11 +127,33 @@ namespace cognex_tesanj
             }
         }
 
+        #region Functions used for database communication
+
+        /// <summary>
+        /// Creates connection
+        /// </summary>
+        /// <returns></returns>
+        public static OleDbConnection CreateConnection()
+        {
+            OleDbConnection MyConnection;
+            OleDbCommand mycommand = new OleDbCommand();
+
+            //string database_loc = "'G:\\N016_17 - Dogradnja Cognex DM čitača datamatrix koda na stroju za mjerenje sile uprešavanja\\database_access.accdb'";
+            string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password=" + Db_Password + "; Persist Security Info = False; Data Source=" + database_loc + ";";
+
+            MyConnection = new OleDbConnection(connectionString);
+            MyConnection.Open();
+            return MyConnection;
+        }
+
         private void retrieve()
         {
+            update_connection();
             dataGridView1.Rows.Clear();
             String sql = "SELECT * FROM Popis_komada";
             cmd = new OleDbCommand(sql, con);
+
+
             try
             {
                 con.Open();
@@ -119,6 +175,35 @@ namespace cognex_tesanj
             }
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            String sql = "SELECT * FROM Popis_komada WHERE Datamatrix LIKE '" + textBox1.Text + "%'";
+            cmd = new OleDbCommand(sql, con);
+
+            try
+            {
+                con.Open();
+                adapter = new OleDbDataAdapter(cmd);
+                adapter.Fill(dt);
+                //LOOP THRU DT
+                foreach (DataRow row in dt.Rows)
+                {
+                    populate(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString());
+                }
+                dt.PrimaryKey = new DataColumn[] { dt.Columns["ID"] };
+
+                con.Close();
+                dt.Rows.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                con.Close();
+            }
+        }
+
+
         public void setText(String rez)
         {
             Console.WriteLine("setting text");
@@ -139,6 +224,9 @@ namespace cognex_tesanj
                 }));
             }
         }
+
+        #endregion
+
         private EthSystemDiscoverer.SystemInfo sysinfo;
 
         /*
@@ -167,7 +255,7 @@ namespace cognex_tesanj
             _ethSystemDiscoverer = null;
         }
 
-        #region Dataman functions
+        #region Dataman communication and control functions
 
         private void OnEthSystemDiscovered(EthSystemDiscoverer.SystemInfo systemInfo)
         {
@@ -301,7 +389,6 @@ namespace cognex_tesanj
                     this.dataman_slika.Name = "dataman_slika";
                     this.dataman_slika.Size = new System.Drawing.Size(16, 17);
                     this.dataman_slika.Text = "slika_status";
-                    //dataman_status.Text = "Greška u konekciji";
                 }
                 catch
                 { }
@@ -518,12 +605,9 @@ namespace cognex_tesanj
             if (this.InvokeRequired)
             {
                 this.Invoke(new EventHandler(delegate
-                {
-                    
-
+                {                  
                     dataman_status.Text = ("Greška u komunikaciji");
                     this.dataman_slika.Image = global::cognex_tesanj.Properties.Resources.yast_red_dot;
-
                 }));
             }
         }
@@ -587,53 +671,42 @@ namespace cognex_tesanj
             _system = null;
         }
 
+        private void testTrigger_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (_system != null)
+            {
+                try
+                {
+                    _system.SendCommand("TRIGGER ON");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    //MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
+                }
+            }
+            else
+            {
+                TriggerTimer.Stop();
+                MessageBox.Show("Nije moguće pokrenuti automatsko očitavanje\n jer nije ostvarena komunikacija sa čitačem!", "Greška komunikacije");
+            }
+        }
 
-
-
+        private void testTrigger_MouseUp(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                _system.SendCommand("TRIGGER OFF");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+               // MessageBox.Show("Failed to send TRIGGER OFF command: " + ex.ToString());
+            }
+        }
 
         #endregion
 
-        DataSet myset = new DataSet("Excel import");
-        DataTable dataTable = new DataTable("excelImport");
-        // OleDbDataAdapter dataAdapter;
-       
-         
-        static string Db_Password = "0000";
-        static string database_loc = Globals.database_loc;
-        static string conString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password=" + Db_Password + "; Persist Security Info = False; Data Source=" + database_loc + ";";
-
-
-        System.Data.OleDb.OleDbCommandBuilder scb;
-        DataSet ds = new DataSet();
-
-        OleDbConnection con = new OleDbConnection(conString);
-        OleDbCommand cmd;
-        OleDbDataAdapter adapter;
-        DataTable dt = new DataTable();
-
-        public static System.Data.OleDb.OleDbConnection CreateConnection()
-        {
-            System.Data.OleDb.OleDbConnection MyConnection;
-            System.Data.OleDb.OleDbCommand mycommand = new System.Data.OleDb.OleDbCommand();
-
-            //string database_loc = "'G:\\N016_17 - Dogradnja Cognex DM čitača datamatrix koda na stroju za mjerenje sile uprešavanja\\database_access.accdb'";
-            string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password=" + Db_Password + "; Persist Security Info = False; Data Source=" + database_loc +";";       
-
-            MyConnection = new System.Data.OleDb.OleDbConnection(connectionString);
-            MyConnection.Open();
-            return MyConnection;
-        }
-
-        public static void ReadData(DataTable data)
-        {
-            foreach (DataRow dataRow in data.Rows)
-            {
-                foreach (var item in dataRow.ItemArray)
-                {
-                    Console.WriteLine(item);
-                }
-            }
-        }
 
         private void populate(string id, string dm, string graf, string ts)
         {
@@ -669,38 +742,7 @@ namespace cognex_tesanj
             }
         }
 
-        private void testTrigger_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (_system != null)
-            {
-                try
-                {
-                    _system.SendCommand("TRIGGER ON");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed to send TRIGGER ON command: " + ex.ToString());
-                }
-            }
-            else
-            {
-                TriggerTimer.Stop();
-                MessageBox.Show("Nije moguće pokrenuti automatsko očitavanje\n jer nije ostvarena komunikacija sa čitačem!", "Greška komunikacije");
-            }
-        }
-
-        private void testTrigger_MouseUp(object sender, MouseEventArgs e)
-        {
-            try
-            {
-                _system.SendCommand("TRIGGER OFF");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to send TRIGGER OFF command: " + ex.ToString());
-            }
-        }
-
+        
         private void button2_Click_1(object sender, EventArgs e)
         {
             this.DMcode.Text = "";
@@ -718,33 +760,7 @@ namespace cognex_tesanj
             _ethSystemDiscoverer = null;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            dataGridView1.Rows.Clear();
-            String sql = "SELECT * FROM Popis_komada WHERE Datamatrix LIKE '"+ textBox1.Text + "%'";
-            cmd = new OleDbCommand(sql, con);
 
-            try
-            {
-                con.Open();
-                adapter = new OleDbDataAdapter(cmd);
-                adapter.Fill(dt);
-                //LOOP THRU DT
-                foreach (DataRow row in dt.Rows)
-                {
-                    populate(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString());
-                }
-                dt.PrimaryKey = new DataColumn[] { dt.Columns["ID"] };
-
-                con.Close();
-                dt.Rows.Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                con.Close();
-            }
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -889,9 +905,7 @@ namespace cognex_tesanj
                 startAuto.Enabled = false;
                 stopAuto.Enabled = false;
                 timer_reset.Start();
-                }
-            //System.Threading.Thread.Sleep(3000);
-            //connect();
+             }
         }
 
         private void timer_reset_Tick(object sender, EventArgs e)

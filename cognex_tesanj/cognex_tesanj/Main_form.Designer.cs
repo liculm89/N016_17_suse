@@ -41,8 +41,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.export_file = new System.Windows.Forms.Button();
+            this.refresh_archive = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -59,7 +59,7 @@
             this.resPic = new System.Windows.Forms.PictureBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.logo_pic = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.discard_read = new System.Windows.Forms.Button();
             this.testTrigger = new System.Windows.Forms.Button();
             this.connReset = new System.Windows.Forms.Button();
             this.timer_reset = new System.Windows.Forms.Timer(this.components);
@@ -186,8 +186,8 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.export_file);
+            this.groupBox1.Controls.Add(this.refresh_archive);
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
@@ -199,36 +199,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Prikaz arhive";
             // 
-            // button4
+            // export_file
             // 
-            this.button4.BackColor = System.Drawing.Color.Khaki;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button4.Image = global::cognex_tesanj.Properties.Resources.system_save_session_svg;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(197, 497);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(191, 50);
-            this.button4.TabIndex = 19;
-            this.button4.Text = "Export odabira";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.export_file.BackColor = System.Drawing.Color.Khaki;
+            this.export_file.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.export_file.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.export_file.Image = global::cognex_tesanj.Properties.Resources.system_save_session_svg;
+            this.export_file.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.export_file.Location = new System.Drawing.Point(197, 497);
+            this.export_file.Name = "export_file";
+            this.export_file.Size = new System.Drawing.Size(191, 50);
+            this.export_file.TabIndex = 19;
+            this.export_file.Text = "Export odabira";
+            this.export_file.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.export_file.UseVisualStyleBackColor = false;
+            this.export_file.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button3
+            // refresh_archive
             // 
-            this.button3.BackColor = System.Drawing.Color.Khaki;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button3.Image = global::cognex_tesanj.Properties.Resources.view_refresh_svg;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(11, 497);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(180, 50);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "Osvježi arhivu";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.refresh_archive.BackColor = System.Drawing.Color.Khaki;
+            this.refresh_archive.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.refresh_archive.Image = global::cognex_tesanj.Properties.Resources.view_refresh_svg;
+            this.refresh_archive.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.refresh_archive.Location = new System.Drawing.Point(11, 497);
+            this.refresh_archive.Name = "refresh_archive";
+            this.refresh_archive.Size = new System.Drawing.Size(180, 50);
+            this.refresh_archive.TabIndex = 18;
+            this.refresh_archive.Text = "Osvježi arhivu";
+            this.refresh_archive.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.refresh_archive.UseVisualStyleBackColor = false;
+            this.refresh_archive.Click += new System.EventHandler(this.button3_Click);
             // 
             // timer1
             // 
@@ -391,22 +391,22 @@
             this.logo_pic.TabIndex = 23;
             this.logo_pic.TabStop = false;
             // 
-            // button2
+            // discard_read
             // 
-            this.button2.BackColor = System.Drawing.Color.Khaki;
-            this.button2.BackgroundImage = global::cognex_tesanj.Properties.Resources.go_parent_folder_svg;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Image = global::cognex_tesanj.Properties.Resources.window_close_svg;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(585, 591);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(192, 50);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Poništi očitanje";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.discard_read.BackColor = System.Drawing.Color.Khaki;
+            this.discard_read.BackgroundImage = global::cognex_tesanj.Properties.Resources.go_parent_folder_svg;
+            this.discard_read.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.discard_read.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.discard_read.Image = global::cognex_tesanj.Properties.Resources.window_close_svg;
+            this.discard_read.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.discard_read.Location = new System.Drawing.Point(585, 591);
+            this.discard_read.Name = "discard_read";
+            this.discard_read.Size = new System.Drawing.Size(192, 50);
+            this.discard_read.TabIndex = 11;
+            this.discard_read.Text = "Poništi očitanje";
+            this.discard_read.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.discard_read.UseVisualStyleBackColor = false;
+            this.discard_read.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // testTrigger
             // 
@@ -458,7 +458,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cbLiveDisplay);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.discard_read);
             this.Controls.Add(this.testTrigger);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -494,7 +494,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button testTrigger;
         public System.Windows.Forms.TextBox DMcode;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button discard_read;
         private System.Windows.Forms.Label lblRes;
         private System.Windows.Forms.PictureBox resPic;
         private System.Windows.Forms.PictureBox LivePic;
@@ -508,8 +508,8 @@
         private System.Windows.Forms.Timer TriggerTimer;
         private System.Windows.Forms.Button startAuto;
         private System.Windows.Forms.Button stopAuto;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button export_file;
+        private System.Windows.Forms.Button refresh_archive;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ToolStripMenuItem postavkeAplikacijeToolStripMenuItem;
         private System.Windows.Forms.Timer timer2;

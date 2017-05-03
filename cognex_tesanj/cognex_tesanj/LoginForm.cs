@@ -9,10 +9,12 @@ namespace cognex_tesanj
     public partial class LoginForm : Form
     {
 
+        ///
 
+        ///
         public LoginForm()
         {
-           
+          
             InitializeComponent();
             PasswdBox.Text = "";
             PasswdBox.PasswordChar = '*';
@@ -32,13 +34,18 @@ namespace cognex_tesanj
                 string conString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password=" + passwd + "; Persist Security Info = False; Data Source=" + db + ";";
 
                 OleDbConnection con = new OleDbConnection(conString);
+                con.Open();
 
-                //String sql = "SELECT * FROM Login";
-                OleDbDataAdapter test = new OleDbDataAdapter("Select Count(*) From Login where user='" + NameBox.Text + "' and password='" + PasswdBox.Text + "'", con);
-                DataTable logins = new DataTable();
-                test.Fill(logins);
-
-                return true;
+                if (con.State.ToString() == "Open")
+                {
+                    con.Close();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+               
             }
             catch (Exception ex)
             {
@@ -48,10 +55,7 @@ namespace cognex_tesanj
         }
 
         private void LoginBtn_Click(object sender, EventArgs e)
-        {
-
-            
-
+        {  
             string database_loc = Globals.database_loc;
             string Db_Password = Globals.db_passwd;
             bool check_connection = test_connection(database_loc, Db_Password);
@@ -99,9 +103,6 @@ namespace cognex_tesanj
                 MessageBox.Show("Nije moguće otvoriti bazu podataka, ne postoji databaza na zadanoj lokaciji ili je u postavkama zadana pogrešna lozinka.");
 
             }
-         
-
-
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)

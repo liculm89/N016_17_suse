@@ -1,0 +1,351 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>cognex_tesanj</name>
+    </assembly>
+    <members>
+        <member name="F:Cognex.DataMan.SDK.cognex_sample.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Cognex.DataMan.SDK.cognex_sample.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Cognex.DataMan.SDK.cognex_sample.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Cognex.DataMan.SDK.frRecon.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Cognex.DataMan.SDK.frRecon.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Cognex.DataMan.SDK.frRecon.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:cognex_tesanj.frRecon">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.frRecon.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.frRecon.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="M:cognex_tesanj.LoginForm.#ctor">
+            
+            
+        </member>
+        <member name="F:cognex_tesanj.LoginForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:cognex_tesanj.LoginForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:cognex_tesanj.LoginForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:cognex_tesanj.Main_form">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:cognex_tesanj.Main_form._closing">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:cognex_tesanj.Main_form._autoconnect">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:cognex_tesanj.Main_form.waitForLog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:cognex_tesanj.Main_form.red_dot">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:cognex_tesanj.Main_form.update_connection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:cognex_tesanj.Main_form.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:cognex_tesanj.Main_form.CreateConnection">
+            <summary>
+            Creates connection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:cognex_tesanj.Main_form.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:cognex_tesanj.Main_form.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:cognex_tesanj.Main_form.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:cognex_tesanj.Database_form.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:cognex_tesanj.Database_form.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:cognex_tesanj.Database_form.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:cognex_tesanj.frmReconnecting.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:cognex_tesanj.frmReconnecting.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:cognex_tesanj.frmReconnecting.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:cognex_tesanj.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="F:cognex_tesanj.select_db.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:cognex_tesanj.select_db.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:cognex_tesanj.select_db.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:cognex_tesanj.SettingsEdit.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:cognex_tesanj.SettingsEdit.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:cognex_tesanj.SettingsEdit.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:cognex_tesanj.SettingsEdit.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:cognex_tesanj.WaitForLogForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:cognex_tesanj.WaitForLogForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:cognex_tesanj.WaitForLogForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:cognex_tesanj.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.adjustlevels_svg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.ajdust_large">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.camera_photo_svg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.cancel">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.clock">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.dialog_ok">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.go_parent_folder_svg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.login">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.login1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.media_playback_start_svg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.media_playback_stop_svg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.novi">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.secure">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.sinel_logo">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.system_save_session_svg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.umbr_large">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.umbrello_diagram_deployment_svg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.view_refresh_svg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.window_close_svg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.yast_green_dot">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.yast_red_dot">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>
