@@ -3,6 +3,7 @@
 using System.Windows.Forms;
 using System.Configuration;
 using System.IO;
+using System.Media;
 
 
 namespace cognex_tesanj
@@ -129,5 +130,6 @@ namespace cognex_tesanj
         {
 
         }
+
     }
 }

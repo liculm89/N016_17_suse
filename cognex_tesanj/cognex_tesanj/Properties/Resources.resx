@@ -181,4 +181,10 @@
   <data name="yast_red_dot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\yast-red-dot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Beep" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Beep.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Beep_error" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Beep_error.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

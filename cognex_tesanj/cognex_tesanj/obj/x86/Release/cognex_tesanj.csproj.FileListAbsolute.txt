@@ -94,3 +94,5 @@ I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.SettingsEdit.resour
 I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.WaitForLogForm.resources
 I:\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.XML
 I:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.select_db.resources
+H:\cognex_tesanj\cognex_tesanj\bin\x86\Release\cognex_tesanj.XML
+H:\cognex_tesanj\cognex_tesanj\obj\x86\Release\cognex_tesanj.select_db.resources

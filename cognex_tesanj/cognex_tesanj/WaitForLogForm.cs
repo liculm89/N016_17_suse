@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Data.OleDb;
+using System.Media;
 
 namespace cognex_tesanj
 {
@@ -22,14 +23,13 @@ namespace cognex_tesanj
         static string watch_dir = Globals.external_archive_loc;
 
         static string database_loc = Globals.database_loc;
-        static string Db_Password = "0000";
+        static string Db_Password = Globals.db_passwd;
         static string conString = "Provider=Microsoft.ACE.OLEDB.12.0; Jet OLEDB:Database Password=" + Db_Password + "; Persist Security Info = False; Data Source=" + database_loc + ";";
         OleDbConnection con = new OleDbConnection(conString);
         OleDbCommand cmd = null;
 
         private void add(string dm, string graf, string ts)
         {
-            //String sql = "INSERT INTO Popis_komada(Datamatrix,Graf,Timestamp) VALUES(@Datamatrix,@Graf,@Timestamp)";
             String sql = "INSERT INTO Popis_komada(Datamatrix,Graf,DatumVrijeme) VALUES(@Datamatrix,@Graf,@DatumVrijeme)";
             cmd = new OleDbCommand(sql, con);
 
@@ -44,12 +44,10 @@ namespace cognex_tesanj
                 con.Open();
                 if (cmd.ExecuteNonQuery() > 0)
                 {
-                    // clearTxts();
-                    // MessageBox.Show("Successfully Inserted");
                     Console.WriteLine("Entry added");
                 }
                 con.Close();
-                //retrieve();
+
             }
             catch (Exception ex)
             {
@@ -66,6 +64,8 @@ namespace cognex_tesanj
 
             mainForm = mf as Main_form;
             //counter = 60;
+            SoundPlayer player = new SoundPlayer(cognex_tesanj.Properties.Resources.Beep);
+            player.Play();
 
             count.Text = "Timeout: " + counter + " s";
             lblDMcode.Text = DMcode;
@@ -83,7 +83,6 @@ namespace cognex_tesanj
 
         private void WaitForLogForm_Load(object sender, EventArgs e)
         {
-            //FileSystemWatcher fw = new FileSystemWatcher(@"C:\Digiforce_arhiva");
             FileSystemWatcher fw = new FileSystemWatcher(watch_dir);
 
             Console.WriteLine(watch_dir);
@@ -117,6 +116,7 @@ namespace cognex_tesanj
             lblGraph.Text = graph;
         }
 
+        //Graph je geneirana i dodaje se u databazu, poziva se beeper zvučni signal
         private void timer1_Tick(object sender, EventArgs e)
         {
             changeGraph();
@@ -124,6 +124,9 @@ namespace cognex_tesanj
             if (lblGraph.Text !=  "Čekanje grafa..." && timestamp != null && dm != null )
             {
                 timer1.Stop();
+
+                SoundPlayer player = new SoundPlayer(cognex_tesanj.Properties.Resources.Beep);
+                player.Play();
                 mainForm.waitForLog = true;
 
                 Console.WriteLine("Database inject");
@@ -143,9 +146,15 @@ namespace cognex_tesanj
         {
             counter--;
             count.Text = "ČEKANJE GRAFA: " +  counter.ToString() + " s";
+
+            //U slučaju da je isteklo vrijeme a graph nije generiran, poziva se error beeper zvučni signal
             if (counter == 0)
             {
                 timer2.Stop();
+
+                SoundPlayer player = new SoundPlayer(cognex_tesanj.Properties.Resources.Beep_error);
+                player.Play();
+
                 mainForm.waitForLog = true;
                 counter = Int32.Parse(Globals.timeout_counter);
                 this.Close();

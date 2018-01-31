@@ -252,6 +252,16 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="P:cognex_tesanj.Properties.Resources.Beep">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:cognex_tesanj.Properties.Resources.Beep_error">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
         <member name="P:cognex_tesanj.Properties.Resources.camera_photo_svg">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
